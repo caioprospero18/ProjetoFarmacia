@@ -20,7 +20,7 @@ public class JFrameConsultaReceita extends javax.swing.JFrame {
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
 
-    public JFrameConsultaReceita() throws SQLException {
+    public JFrameConsultaReceita(Receita receita, boolean select, boolean disconnectOnClose) throws SQLException {
         initComponents();
         
         this.receita = receita;
@@ -261,7 +261,7 @@ public class JFrameConsultaReceita extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try{
-                    new JFrameConsultaReceita().setVisible(true);
+                    new JFrameConsultaReceita(null, false, true).setVisible(true);
                 }catch(Exception ex){
                     ex.printStackTrace();
                 }

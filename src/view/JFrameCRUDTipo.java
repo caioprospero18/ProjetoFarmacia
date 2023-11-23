@@ -24,7 +24,17 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
     }
     
     private void checkInput(){
+        if (jTextFieldID.getText().isEmpty()){
+            new Exception("Informe ID");
+        }
         
+        if( !jTextFieldID.getText().isEmpty() &&
+                !jTextFieldID.getText().matches("\\d+") )
+                    new Exception("O campo ID precisa ser um número.");
+        
+        if (jTextFieldNome.getText().isEmpty()){
+            new Exception("Informe Nome");
+        }
     }
 
     private void dataDown(){

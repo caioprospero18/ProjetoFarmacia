@@ -16,7 +16,8 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
     private boolean select;//define se é uma janela de seleção
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     
-    private String query = "SELECT codigo_tipo as ID, nome as Nome_Tipo FROM usuarios";
+    private String query = "SELECT u.codigo_usuario as ID, u.nome_completo as Nome, u.cpf as CPF, u.celular as Celular, t.nome as Tipo "
+            + "FROM usuarios u join tipo_usuario t";
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
 

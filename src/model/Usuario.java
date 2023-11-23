@@ -2,6 +2,8 @@
 package model;
 
 import controller.DataAccessObject;
+import java.math.BigInteger;
+import java.security.MessageDigest;
 import java.util.ArrayList;
 
 public class Usuario extends DataAccessObject{
@@ -16,6 +18,9 @@ public class Usuario extends DataAccessObject{
     private String bairro;
     private String cidade;
     private String estado;
+    private String telefone;
+    private String celular;
+    private String senhaAcesso;
     private TipoUsuario tipoUsuario;
     
     public Usuario(){
@@ -91,6 +96,39 @@ public class Usuario extends DataAccessObject{
             addChange("estado", this.estado);
         }
     }
+    
+    public void setTelefone(String telefone) {
+        if( !telefone.equals( this.telefone ) ) {
+            this.telefone = telefone;
+            addChange("telefone", this.telefone);
+        }
+    }
+    
+    public void setCelular(String celular) {
+        if( !celular.equals( this.celular ) ) {
+            this.celular = celular;
+            addChange("celular", this.celular);
+        }
+    }
+    
+    public void setSenhaAcesso(String senhaAcesso) {
+        if ( !senhaAcesso.equals(this.senhaAcesso)){
+            this.senhaAcesso = getSenhaHash(senhaAcesso);
+            addChange("senha_acesso", this.senhaAcesso);
+        }
+    }
+    
+    private String getSenhaHash(String senhaAcesso){
+        String senhaHash = "";
+        try{
+            MessageDigest md = MessageDigest.getInstance( "SHA-256");
+            senhaAcesso += String.valueOf(getCodigoUsuario());
+            senhaHash = new BigInteger( 1, md.digest(senhaAcesso.getBytes("UTF-8") ) ).toString(16);
+        } catch ( Exception ex ){
+            ex.printStackTrace();
+        }
+        return senhaHash;
+    }
 
     public void setTipoUsuario(TipoUsuario tipoUsuario) throws Exception {
         if( this.tipoUsuario == null ){
@@ -156,6 +194,18 @@ public class Usuario extends DataAccessObject{
     public String getEstado() {
         return estado;
     }
+    
+    public String getTelefone() {
+        return telefone;
+    }
+    
+    public String getCelular() {
+        return celular;
+    }
+    
+    public String getSenhaAcesso() {
+        return senhaAcesso;
+    }
 
     public TipoUsuario getTipoUsuario() {
         return tipoUsuario;
@@ -178,12 +228,15 @@ public class Usuario extends DataAccessObject{
         this.bairro = (String)data.get(7);
         this.cidade = (String)data.get(8);
         this.estado = (String)data.get(9);
-        if( data.get(10) != null ){
+        this.telefone= (String)data.get(10);
+        this.celular= (String)data.get(11);
+        this.senhaAcesso = (String)data.get(12);
+        if( data.get(13) != null ){
             if( tipoUsuario == null){
                 tipoUsuario = new TipoUsuario();
             }
             
-            tipoUsuario.setCodigoTipo((int)data.get(10));
+            tipoUsuario.setCodigoTipo((int)data.get(13));
             tipoUsuario.load();
         }
     }

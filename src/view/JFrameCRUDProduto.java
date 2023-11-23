@@ -2,11 +2,13 @@
 package view;
 
 import java.awt.event.WindowEvent;
+import model.CategoriaProduto;
 import model.Produto;
 
 public class JFrameCRUDProduto extends javax.swing.JFrame {
 
  private Produto produto;//objeto da tabela
+ private CategoriaProduto categoria;
  private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
  
     public JFrameCRUDProduto(Produto produto, boolean disconnectOnClose) {
@@ -26,7 +28,7 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
         
     }
     
-    private void dataDown(){
+    private void dataDown() throws Exception{
         //data.setter TRAZER OS DADOS DA JANELA PARA O OBJETO
         produto.setCodigoProduto(Integer.parseInt(jTextFieldID.getText() ) );
         produto.setNomeProduto(jTextFieldNome.getText());
@@ -34,7 +36,7 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
         produto.setQuantidadeEstoque(Integer.parseInt(jTextFieldQuantidade.getText() ) );
         produto.setTarja(jTextFieldTarja.getText());
         //produto.setReceita(jCheckBoxReceita);
-        produto.setCodigoCategoria(Integer.parseInt(jTextFieldIDCategoria.getText() ) );       
+        produto.setCategoria(categoria);       
     }
     
     private void dataUp(){
@@ -45,7 +47,9 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
         jTextFieldQuantidade.setText(String.valueOf(produto.getQuantidadeEstoque() ) );
         jTextFieldTarja.setText(produto.getTarja());
         //
-        jTextFieldIDCategoria.setText(String.valueOf(produto.getCodigoCategoria() )  );
+        if(produto.getCategoria().getCategoria()!= null){
+            jTextFieldCategoria.setText(produto.getCategoria().getCategoria());
+        }
     }
     
 
@@ -71,8 +75,10 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
         jCheckBoxReceita = new javax.swing.JCheckBox();
         jButtonExcluir = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
-        jLabelIDCategoria = new javax.swing.JLabel();
-        jTextFieldIDCategoria = new javax.swing.JTextField();
+        jLabelCategoria = new javax.swing.JLabel();
+        jTextFieldCategoria = new javax.swing.JTextField();
+        jButtonSelecionarCategoria = new javax.swing.JButton();
+        jButtonApagarCategoria = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -107,7 +113,23 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
             }
         });
 
-        jLabelIDCategoria.setText("ID categoria:");
+        jLabelCategoria.setText("Categoria:");
+
+        jTextFieldCategoria.setEditable(false);
+
+        jButtonSelecionarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/search-icon.png"))); // NOI18N
+        jButtonSelecionarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSelecionarCategoriaActionPerformed(evt);
+            }
+        });
+
+        jButtonApagarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/eraser-icon.png"))); // NOI18N
+        jButtonApagarCategoria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonApagarCategoriaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,9 +164,13 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
                                 .addComponent(jTextFieldTarja, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 16, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabelIDCategoria)
+                        .addComponent(jLabelCategoria)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldIDCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTextFieldCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonSelecionarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonApagarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBoxReceita)
@@ -159,27 +185,30 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabelID)
-                                .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabelNome)
-                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelValor)
-                                .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelQuantidade)
-                            .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelTarja)
-                            .addComponent(jTextFieldTarja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jCheckBoxReceita))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelIDCategoria)
-                        .addComponent(jTextFieldIDCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabelID)
+                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelNome)
+                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabelValor)
+                        .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelQuantidade)
+                    .addComponent(jTextFieldQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTarja)
+                    .addComponent(jTextFieldTarja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jCheckBoxReceita)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonApagarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonSelecionarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelCategoria)
+                        .addComponent(jTextFieldCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExcluir)
@@ -223,19 +252,51 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButtonSelecionarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarCategoriaActionPerformed
+        try{
+
+            if (categoria == null){
+                categoria = new CategoriaProduto();
+            }
+
+            JFrameConsultaCategoria jFrameConsultaCategoria;
+            jFrameConsultaCategoria = new JFrameConsultaCategoria(categoria, true, false);
+            jFrameConsultaCategoria.addWindowListener( new java.awt.event.WindowAdapter() {
+                @Override
+                //metodo para atualizar a tabela ao fechar a Janela CRUD
+                public void windowClosed( java.awt.event.WindowEvent evt){
+                    if( categoria.getCategoria()!= null){
+                        jTextFieldCategoria.setText(categoria.getCategoria());
+                    }
+                }
+            });
+            jFrameConsultaCategoria.setVisible(true);
+        } catch( Exception ex){
+            ex.printStackTrace();
+            categoria = null;
+        }
+    }//GEN-LAST:event_jButtonSelecionarCategoriaActionPerformed
+
+    private void jButtonApagarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarCategoriaActionPerformed
+        categoria = null;
+        jTextFieldCategoria.setText(null);
+    }//GEN-LAST:event_jButtonApagarCategoriaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonApagarCategoria;
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonSelecionarCategoria;
     private javax.swing.JCheckBox jCheckBoxReceita;
+    private javax.swing.JLabel jLabelCategoria;
     private javax.swing.JLabel jLabelID;
-    private javax.swing.JLabel jLabelIDCategoria;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JLabel jLabelQuantidade;
     private javax.swing.JLabel jLabelTarja;
     private javax.swing.JLabel jLabelValor;
+    private javax.swing.JTextField jTextFieldCategoria;
     private javax.swing.JTextField jTextFieldID;
-    private javax.swing.JTextField jTextFieldIDCategoria;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JTextField jTextFieldQuantidade;
     private javax.swing.JTextField jTextFieldTarja;

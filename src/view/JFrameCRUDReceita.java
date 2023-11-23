@@ -2,11 +2,13 @@
 package view;
 
 import java.awt.event.WindowEvent;
+import model.Produto;
 import model.Receita;
 
 public class JFrameCRUDReceita extends javax.swing.JFrame {
     
     private Receita receita;//objeto da tabela
+    private Produto remedio;
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
 
     public JFrameCRUDReceita(Receita receita, boolean disconnectOnClose) {
@@ -26,13 +28,13 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
         
     }
     
-    private void dataDown(){
+    private void dataDown() throws Exception{
         //data.setter TRAZER OS DADOS DA JANELA PARA O OBJETO
         receita.setCodigoReceita(Integer.parseInt(jTextFieldID.getText() ) );
         receita.setNomeMedico(jTextFieldNomeMedico.getText());
         receita.setCrm(jTextFieldCrm.getText());
         receita.setCor(jTextFieldCor.getText()  );
-        //receita.setProduto(Integer.parseInt(jTextFieldIDProduto.getText() ) );       
+        receita.setProduto(remedio);       
     }
     
     private void dataUp(){
@@ -41,7 +43,9 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
         jTextFieldNomeMedico.setText(receita.getNomeMedico());
         jTextFieldCrm.setText(receita.getCrm());
         jTextFieldCor.setText(receita.getCor()  );
-        jTextFieldIDProduto.setText(String.valueOf(receita.getProduto() )  );
+        if(receita.getProduto().getNomeProduto()!= null){
+            jTextFieldRemedio.setText(receita.getProduto().getNomeProduto());
+        }
     }
 
 
@@ -57,10 +61,12 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
         jTextFieldCrm = new javax.swing.JTextField();
         jLabelCor = new javax.swing.JLabel();
         jTextFieldCor = new javax.swing.JTextField();
-        jLabelIDProduto = new javax.swing.JLabel();
-        jTextFieldIDProduto = new javax.swing.JTextField();
+        jLabelRemedio = new javax.swing.JLabel();
+        jTextFieldRemedio = new javax.swing.JTextField();
         jButtonExcluir = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
+        jButtonSelecionarRemedio = new javax.swing.JButton();
+        jButtonApagarRemedio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -77,7 +83,9 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
 
         jLabelCor.setText("Cor:");
 
-        jLabelIDProduto.setText("ID produto:");
+        jLabelRemedio.setText("Remédio:");
+
+        jTextFieldRemedio.setEditable(false);
 
         jButtonExcluir.setText("Excluir");
         jButtonExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -90,6 +98,20 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
         jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalvarActionPerformed(evt);
+            }
+        });
+
+        jButtonSelecionarRemedio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/search-icon.png"))); // NOI18N
+        jButtonSelecionarRemedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSelecionarRemedioActionPerformed(evt);
+            }
+        });
+
+        jButtonApagarRemedio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/eraser-icon.png"))); // NOI18N
+        jButtonApagarRemedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonApagarRemedioActionPerformed(evt);
             }
         });
 
@@ -109,9 +131,14 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldNomeMedico))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelIDProduto)
+                        .addComponent(jLabelRemedio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldIDProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jTextFieldRemedio, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonSelecionarRemedio, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonApagarRemedio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelCrm)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -146,14 +173,17 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
                     .addComponent(jLabelCor)
                     .addComponent(jTextFieldCor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelIDProduto)
-                    .addComponent(jTextFieldIDProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelRemedio)
+                        .addComponent(jTextFieldRemedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonSelecionarRemedio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonApagarRemedio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExcluir)
                     .addComponent(jButtonSalvar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
@@ -192,20 +222,52 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void jButtonSelecionarRemedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarRemedioActionPerformed
+        try{
+
+            if (remedio == null){
+                remedio = new Produto();
+            }
+
+            JFrameConsultaProduto jFrameConsultaProduto;
+            jFrameConsultaProduto = new JFrameConsultaProduto(remedio, true, false);
+            jFrameConsultaProduto.addWindowListener( new java.awt.event.WindowAdapter() {
+                @Override
+                //metodo para atualizar a tabela ao fechar a Janela CRUD
+                public void windowClosed( java.awt.event.WindowEvent evt){
+                    if( remedio.getNomeProduto()!= null){
+                        jTextFieldRemedio.setText(remedio.getNomeProduto());
+                    }
+                }
+            });
+            jFrameConsultaProduto.setVisible(true);
+        } catch( Exception ex){
+            ex.printStackTrace();
+            remedio = null;
+        }
+    }//GEN-LAST:event_jButtonSelecionarRemedioActionPerformed
+
+    private void jButtonApagarRemedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarRemedioActionPerformed
+        remedio = null;
+        jTextFieldRemedio.setText(null);
+    }//GEN-LAST:event_jButtonApagarRemedioActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonApagarRemedio;
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonSelecionarRemedio;
     private javax.swing.JLabel jLabelCor;
     private javax.swing.JLabel jLabelCrm;
     private javax.swing.JLabel jLabelID;
-    private javax.swing.JLabel jLabelIDProduto;
     private javax.swing.JLabel jLabelNomeMedico;
+    private javax.swing.JLabel jLabelRemedio;
     private javax.swing.JTextField jTextFieldCor;
     private javax.swing.JTextField jTextFieldCrm;
     private javax.swing.JTextField jTextFieldID;
-    private javax.swing.JTextField jTextFieldIDProduto;
     private javax.swing.JTextField jTextFieldNomeMedico;
+    private javax.swing.JTextField jTextFieldRemedio;
     // End of variables declaration//GEN-END:variables
 }
