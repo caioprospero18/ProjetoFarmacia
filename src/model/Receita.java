@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class Receita extends DataAccessObject{
     private int codigoReceita;
-    private String nomeRemedio;
     private String nomeMedico;
     private String crm;
     private String cor;
@@ -23,12 +22,6 @@ public class Receita extends DataAccessObject{
         }
     }
 
-    public void setNomeRemedio(String nomeRemedio) {
-        if( nomeRemedio != this.nomeRemedio){
-            this.nomeRemedio = nomeRemedio;
-            addChange("nome_remedio", this.nomeRemedio);
-        }
-    }
 
     public void setNomeMedico(String nomeMedico) {
         if( nomeMedico != this.nomeMedico){
@@ -80,9 +73,6 @@ public class Receita extends DataAccessObject{
         return codigoReceita;
     }
 
-    public String getNomeRemedio() {
-        return nomeRemedio;
-    }
 
     public String getNomeMedico() {
         return nomeMedico;
@@ -106,16 +96,15 @@ public class Receita extends DataAccessObject{
     
     public void fill(ArrayList<Object> data) throws Exception{
         this.codigoReceita = (int)data.get(0);
-        this.nomeRemedio = (String)data.get(1);
-        this.nomeMedico = (String)data.get(2);
-        this.crm = (String)data.get(3);
-        this.cor = (String)data.get(4);
-        if( data.get(5) != null ){
+        this.nomeMedico = (String)data.get(1);
+        this.crm = (String)data.get(2);
+        this.cor = (String)data.get(3);
+        if( data.get(4) != null ){
             if( produto == null){
                 produto = new Produto();
             }
             
-            produto.setCodigoProduto((int)data.get(5));
+            produto.setCodigoProduto((int)data.get(4));
             produto.load();
         }
 
