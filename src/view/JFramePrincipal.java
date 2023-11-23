@@ -44,8 +44,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItemCadastroTipoUsuario = new javax.swing.JMenuItem();
         jMenuItemCadastroUsuarios = new javax.swing.JMenuItem();
         jMenuItemCadastroVenda = new javax.swing.JMenuItem();
-        jMenuAgendamento = new javax.swing.JMenu();
-        jMenuAtendimento = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Gerenciamento de Clínica Médica");
@@ -163,12 +161,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuAdm.add(jMenuItemCadastroVenda);
 
         jMenuBar.add(jMenuAdm);
-
-        jMenuAgendamento.setText("Agendamento");
-        jMenuBar.add(jMenuAgendamento);
-
-        jMenuAtendimento.setText("Atendimento");
-        jMenuBar.add(jMenuAtendimento);
 
         setJMenuBar(jMenuBar);
 
@@ -357,8 +349,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuAdm;
-    private javax.swing.JMenu jMenuAgendamento;
-    private javax.swing.JMenu jMenuAtendimento;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuCadastroProduto;
     private javax.swing.JMenuItem jMenuConsultaProduto;

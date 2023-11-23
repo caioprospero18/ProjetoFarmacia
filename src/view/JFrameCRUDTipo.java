@@ -23,14 +23,14 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
     
     }
     
-    private void checkInput(){
+    private void checkInput() throws Exception{
         if (jTextFieldID.getText().isEmpty()){
-            new Exception("Informe ID");
+            throw new Exception("Informe ID");
         }
         
         if( !jTextFieldID.getText().isEmpty() &&
                 !jTextFieldID.getText().matches("\\d+") )
-                    new Exception("O campo ID precisa ser um número.");
+                    throw new Exception("O campo ID precisa ser um número.");
         
         if (jTextFieldNome.getText().isEmpty()){
             new Exception("Informe Nome");
@@ -59,7 +59,7 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
         jButtonExcluir = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -94,8 +94,8 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(64, 64, 64)
+                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
                         .addComponent(jLabelNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))

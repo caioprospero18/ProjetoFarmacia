@@ -24,39 +24,39 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
         this.disconnectOnClose = disconnectOnClose;
     }
     
-     private void checkInput(){
+     private void checkInput() throws Exception{
         if( jTextFieldID.getText().isEmpty() ){
-            new Exception("Informe o ID");
+            throw new Exception("Informe o ID");
         } else {
             if (!jTextFieldID.getText().isEmpty()
                     && !jTextFieldID.getText().matches("\\d+")){
-                new Exception("O campo ID deve ser um número.");
+                throw new Exception("O campo ID deve ser um número.");
             }
         }
         
         if ( jTextFieldNomeCompleto.getText().isEmpty()){
-            new Exception("Informe o Nome.");
+            throw new Exception("Informe o Nome.");
         }
         
         if ( jTextFieldDataNascimento.getText().isEmpty()){
-            new Exception("Informe a Data de Nascimento.");
+            throw new Exception("Informe a Data de Nascimento.");
         } else {
             if (!jTextFieldDataNascimento.getText().isEmpty()
                     && !jTextFieldDataNascimento.getText().matches("\\d{4}-\\d{2}-\\d{2}")){
-                new Exception("A Data de Nascimento deve estar no formato AAAA-MM-DD.");
+                throw new Exception("A Data de Nascimento deve estar no formato AAAA-MM-DD.");
             }
         }
         
         if ( jPasswordFieldSenha.getText().isEmpty()){
-            new Exception("Informe Senha.");
+            throw new Exception("Informe Senha.");
         }
         
         if ( jTextFieldTipo.getText().isEmpty()){
-            new Exception("Informe Tipo Usuário.");
+            throw new Exception("Informe Tipo Usuário.");
         }else{
             if (!jTextFieldTipo.getText().isEmpty()
                     && !jTextFieldTipo.getText().matches("\\d+")){
-                new Exception("O campo Tipo Usuário deve ser um número.");
+                throw new Exception("O campo Tipo Usuário deve ser um número.");
             }
         }
     }
@@ -137,7 +137,7 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
         jLabelCelular = new javax.swing.JLabel();
         jTextFieldCelular = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -226,8 +226,8 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelID)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
+                                .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
                                 .addComponent(jLabelNomeCompleto))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelDataNascimento)
@@ -249,14 +249,14 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldBairro))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelEstado)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButtonSalvar))))
+                                .addComponent(jButtonSalvar))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabelEstado)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(69, 69, 69))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -327,13 +327,12 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
                     .addComponent(jLabelCelular)
                     .addComponent(jTextFieldCelular, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelTipo)
-                            .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jButtonSelecionarCategoria, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(jButtonApagarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabelTipo)
+                        .addComponent(jTextFieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonSelecionarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonApagarCategoria, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExcluir)

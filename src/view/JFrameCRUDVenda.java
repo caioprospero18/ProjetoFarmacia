@@ -26,7 +26,24 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         this.disconnectOnClose = disconnectOnClose;
     }
     
-    private void checkInput(){
+    private void checkInput() throws Exception{
+        if( jTextFieldID.getText().isEmpty() ){
+            throw new Exception("Informe o ID.");
+        } else {
+            if (!jTextFieldID.getText().isEmpty()
+                    && !jTextFieldID.getText().matches("\\d+")){
+                throw new Exception("O campo ID deve ser um número.");
+            }
+        }
+        
+        if( jTextFieldQuantidade.getText().isEmpty() ){
+            throw new Exception("Informe a quantidade do produto.");
+        } else {
+            if (!jTextFieldQuantidade.getText().isEmpty()
+                    && !jTextFieldQuantidade.getText().matches("\\d+")){
+                throw new Exception("O campo quantidade deve ser um número.");
+            }
+        }
         
     }
 
@@ -81,7 +98,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         jButtonSelecionarProduto = new javax.swing.JButton();
         jButtonApagarProduto = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -167,8 +184,8 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabelID)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabelData)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))

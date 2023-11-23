@@ -24,7 +24,7 @@ public class JFrameCRUDCategoria extends javax.swing.JFrame {
     
     private void checkInput() throws Exception{
         if( jTextFieldID.getText().isEmpty() ){
-            new Exception("Informe o ID");
+            throw new Exception("Informe o ID");
         } else {
             if (!jTextFieldID.getText().isEmpty()
                     && !jTextFieldID.getText().matches("\\d+")){
@@ -113,8 +113,8 @@ public class JFrameCRUDCategoria extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
+                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
                         .addComponent(jLabelCategoria))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelDesconto)

@@ -15,7 +15,7 @@ public class JFrameConsultaCategoria extends javax.swing.JFrame {
     private boolean select;//define se é uma janela de seleção
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     
-    private String query = "SELECT codigo_categoria as ID, categoria as Categoria FROM categoria_produto";
+    private String query = "SELECT codigo_categoria as ID, categoria as Categoria, desconto as Desconto FROM categoria_produto";
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
 
