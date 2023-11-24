@@ -1,6 +1,7 @@
 
 package view;
 
+import controller.LogTrack;
 import java.awt.event.WindowEvent;
 import model.TipoUsuario;
 import model.Usuario;
@@ -350,7 +351,7 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
             usuario.delete();
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -362,7 +363,7 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
             //evento para fechar a janela ao clicar "Salvar"
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
@@ -372,7 +373,7 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
                     usuario.disconnectFromDatabase();
                 }
             } catch (Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -396,7 +397,7 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
             });
             jFrameConsultaTipo.setVisible(true);
         } catch( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
             tipo = null;
         }
     }//GEN-LAST:event_jButtonSelecionarCategoriaActionPerformed

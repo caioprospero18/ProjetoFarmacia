@@ -1,6 +1,7 @@
 
 package view;
 
+import controller.LogTrack;
 import java.awt.event.WindowEvent;
 import model.Produto;
 import model.Usuario;
@@ -271,7 +272,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
             venda.delete();
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -283,7 +284,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
             //evento para fechar a janela ao clicar "Salvar"
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
@@ -293,7 +294,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                     venda.disconnectFromDatabase();
                 }
             } catch (Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -317,7 +318,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
             });
             jFrameConsultaUsuario.setVisible(true);
         } catch( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
             usuario = null;
         }
     }//GEN-LAST:event_jButtonSelecionarUsuarioActionPerformed
@@ -347,7 +348,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
             });
             jFrameConsultaProduto.setVisible(true);
         } catch( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
             produto = null;
         }
     }//GEN-LAST:event_jButtonSelecionarProdutoActionPerformed

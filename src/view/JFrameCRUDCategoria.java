@@ -1,6 +1,7 @@
 
 package view;
 
+import controller.LogTrack;
 import java.awt.event.WindowEvent;
 import model.CategoriaProduto;
 
@@ -155,7 +156,7 @@ public class JFrameCRUDCategoria extends javax.swing.JFrame {
             //evento para fechar a janela ao clicar "Salvar"
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
@@ -166,7 +167,7 @@ public class JFrameCRUDCategoria extends javax.swing.JFrame {
             categoria.delete();
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -176,7 +177,7 @@ public class JFrameCRUDCategoria extends javax.swing.JFrame {
                     categoria.disconnectFromDatabase();
                 }
             } catch (Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_formWindowClosing
 

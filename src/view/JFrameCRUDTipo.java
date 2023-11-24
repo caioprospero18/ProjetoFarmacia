@@ -1,6 +1,7 @@
 
 package view;
 
+import controller.LogTrack;
 import java.awt.event.WindowEvent;
 import model.TipoUsuario;
 
@@ -33,7 +34,7 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
                     throw new Exception("O campo ID precisa ser um número.");
         
         if (jTextFieldNome.getText().isEmpty()){
-            new Exception("Informe Nome");
+            throw new Exception("Informe Nome");
         }
     }
 
@@ -133,7 +134,7 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
             tipo.delete();
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -145,7 +146,7 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
             //evento para fechar a janela ao clicar "Salvar"
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
@@ -155,7 +156,7 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
                     tipo.disconnectFromDatabase();
                 }
             } catch (Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_formWindowClosing
 

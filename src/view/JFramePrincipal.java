@@ -4,6 +4,8 @@
  */
 package view;
 
+import controller.LogTrack;
+
 
 
 /**
@@ -191,7 +193,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameConsultaCategoria = new JFrameConsultaCategoria(null ,false, true);
             jFrameConsultaCategoria.setVisible(true);
         } catch ( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemConsultaCategoriaActionPerformed
 
@@ -201,7 +203,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameCRUDCategoria = new JFrameCRUDCategoria(null,true);
             jFrameCRUDCategoria.setVisible(true);
         } catch ( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemCadastroCategoriaActionPerformed
 
@@ -211,7 +213,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameConsultaProduto = new JFrameConsultaProduto(null,false, true);
             jFrameConsultaProduto.setVisible(true);
         } catch ( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuConsultaProdutoActionPerformed
 
@@ -221,7 +223,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameCRUDProduto = new JFrameCRUDProduto(null,true);
             jFrameCRUDProduto.setVisible(true);
         } catch ( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuCadastroProdutoActionPerformed
 
@@ -231,7 +233,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameCRUDUsuario = new JFrameCRUDUsuario(null,true);
             jFrameCRUDUsuario.setVisible(true);
         } catch ( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemCadastroUsuariosActionPerformed
 
@@ -241,7 +243,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameConsultaUsuario = new JFrameConsultaUsuario(null,false, true);
             jFrameConsultaUsuario.setVisible(true);
         } catch ( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemConsultaUsuariosActionPerformed
 
@@ -251,7 +253,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameConsultaTipo = new JFrameConsultaTipo(null, false, true);
             jFrameConsultaTipo.setVisible(true);
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemConsultaTipoUsuarioActionPerformed
 
@@ -261,7 +263,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameCRUDTipo = new JFrameCRUDTipo(null, true);
             jFrameCRUDTipo.setVisible(true);
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemCadastroTipoUsuarioActionPerformed
 
@@ -271,7 +273,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameCRUDVenda = new JFrameCRUDVenda(null, true);
             jFrameCRUDVenda.setVisible(true);
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemCadastroVendaActionPerformed
 
@@ -281,7 +283,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameConsultaVenda = new JFrameConsultaVenda(null, false, true);
             jFrameConsultaVenda.setVisible(true);
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemConsultaVendaActionPerformed
 
@@ -291,7 +293,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameConsultaReceita = new JFrameConsultaReceita(null, false, true);
             jFrameConsultaReceita.setVisible(true);
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemConsultaReceitaActionPerformed
 
@@ -301,7 +303,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jFrameCRUDReceita = new JFrameCRUDReceita(null, true);
             jFrameCRUDReceita.setVisible(true);
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jMenuItemCadastroReceitaActionPerformed
 

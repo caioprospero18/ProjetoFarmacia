@@ -1,6 +1,7 @@
 
 package view;
 
+import controller.LogTrack;
 import java.awt.event.WindowEvent;
 import model.CategoriaProduto;
 import model.Produto;
@@ -55,7 +56,11 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
         produto.setValorProduto(Float.parseFloat(jTextFieldValor.getText() ) );
         produto.setQuantidadeEstoque(Integer.parseInt(jTextFieldQuantidade.getText() ) );
         produto.setTarja(jTextFieldTarja.getText());
-        //produto.setReceita(jCheckBoxReceita);
+        if(jCheckBoxReceita.isSelected()){
+            produto.setReceita("S");
+        }else{
+            produto.setReceita("N");
+        }
         produto.setCategoria(categoria);       
     }
     
@@ -66,7 +71,11 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
         jTextFieldValor.setText(String.valueOf(produto.getValorProduto() ) );
         jTextFieldQuantidade.setText(String.valueOf(produto.getQuantidadeEstoque() ) );
         jTextFieldTarja.setText(produto.getTarja());
-        //
+        if(produto.getReceita() != null && produto.getReceita().equals("S")){
+            jCheckBoxReceita.setSelected(true);
+        }else{
+            jCheckBoxReceita.setSelected(false);
+        }
         if(produto.getCategoria().getCategoria()!= null){
             jTextFieldCategoria.setText(produto.getCategoria().getCategoria());
         }
@@ -246,7 +255,7 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
             produto.delete();
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
@@ -258,7 +267,7 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
             //evento para fechar a janela ao clicar "Salvar"
             this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
@@ -268,7 +277,7 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
                     produto.disconnectFromDatabase();
                 }
             } catch (Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_formWindowClosing
 
@@ -292,7 +301,7 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
             });
             jFrameConsultaCategoria.setVisible(true);
         } catch( Exception ex){
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
             categoria = null;
         }
     }//GEN-LAST:event_jButtonSelecionarCategoriaActionPerformed
