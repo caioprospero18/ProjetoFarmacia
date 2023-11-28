@@ -9,6 +9,7 @@ public class Receita extends DataAccessObject{
     private String nomeMedico;
     private String crm;
     private String cor;
+    private Usuario cliente;
     private Produto produto;
     
     public Receita(){
@@ -42,6 +43,31 @@ public class Receita extends DataAccessObject{
             this.cor = cor;
             addChange("cor", this.cor);
         }
+    }
+    
+    public void setCliente(Usuario cliente) throws Exception {
+        if( this.cliente == null ){
+           
+           if( cliente != null ){
+               this.cliente = new Usuario();
+               this.cliente.setCodigoUsuario(cliente.getCodigoUsuario());
+               this.cliente.load();
+               addChange("codigo_cliente", this.cliente.getCodigoUsuario());
+           }
+       }else{
+           if( cliente == null){
+               
+               this.cliente = null;
+               addChange("codigo_cliente", null);
+           }else{
+               
+               if( !this.cliente.equals( cliente ) ){
+                   this.cliente.setCodigoUsuario(cliente.getCodigoUsuario());
+                   this.cliente.load();
+                   addChange("codigo_produto", this.cliente.getCodigoUsuario());
+               }
+           }
+       }
     }
 
     public void setProduto(Produto produto) throws Exception {
@@ -85,6 +111,11 @@ public class Receita extends DataAccessObject{
     public String getCor() {
         return cor;
     }
+
+    public Usuario getCliente() {
+        return cliente;
+    }
+    
 
     public Produto getProduto() {
         return produto;

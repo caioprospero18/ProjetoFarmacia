@@ -47,14 +47,14 @@ public class JFrameCRUDCategoria extends javax.swing.JFrame {
         //data.setter TRAZER OS DADOS DA JANELA PARA O OBJETO
         categoria.setCodigoCategoria(Integer.parseInt(jTextFieldID.getText() ) );
         categoria.setCategoria(jTextFieldCategoria.getText());
-        
+        categoria.setDesconto(Float.parseFloat(jTextFieldDesconto.getText() ) );
     }
     
     private void dataUp(){
         //data.getter LEVAR OS DADOS DO OBJETO PARA A JANELA
         jTextFieldID.setText(String.valueOf(categoria.getCodigoCategoria()) );
         jTextFieldCategoria.setText(categoria.getCategoria());
-        
+        jTextFieldDesconto.setText(String.valueOf(categoria.getDesconto()));       
     }
 
     @SuppressWarnings("unchecked")

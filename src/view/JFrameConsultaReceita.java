@@ -15,8 +15,8 @@ public class JFrameConsultaReceita extends javax.swing.JFrame {
     private boolean select;//define se é uma janela de seleção
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     
-    private String query = "SELECT r.codigo_receita as ID, nome_medico as Nome_Medico,"
-            + " r.crm as CRM, r.cor as Cor, p.nome_produto as Remedio FROM receitas r join produtos p";
+    private String query = "SELECT r.codigo_receita as ID, nome_medico as Medico,"
+            + " r.crm as CRM, r.cor as Cor, u.nome_completo as Cliente, p.nome_produto as Remedio FROM receitas r join usuarios u join produtos p";
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
 

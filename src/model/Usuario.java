@@ -20,6 +20,7 @@ public class Usuario extends DataAccessObject{
     private String estado;
     private String telefone;
     private String celular;
+    private String email;
     private String senhaAcesso;
     private TipoUsuario tipoUsuario;
     
@@ -110,6 +111,15 @@ public class Usuario extends DataAccessObject{
             addChange("celular", this.celular);
         }
     }
+
+    public void setEmail(String email) {
+        if( !email.equals( this.email ) ) {
+            this.email = email;
+            addChange("email", this.email);
+        }
+    }
+    
+    
     
     public void setSenhaAcesso(String senhaAcesso) {
         if ( !senhaAcesso.equals(this.senhaAcesso)){
@@ -202,6 +212,11 @@ public class Usuario extends DataAccessObject{
     public String getCelular() {
         return celular;
     }
+
+    public String getEmail() {
+        return email;
+    }
+    
     
     public String getSenhaAcesso() {
         return senhaAcesso;
@@ -230,13 +245,14 @@ public class Usuario extends DataAccessObject{
         this.estado = (String)data.get(9);
         this.telefone= (String)data.get(10);
         this.celular= (String)data.get(11);
-        this.senhaAcesso = (String)data.get(12);
-        if( data.get(13) != null ){
+        this.email= (String)data.get(12);
+        this.senhaAcesso = (String)data.get(13);
+        if( data.get(14) != null ){
             if( tipoUsuario == null){
                 tipoUsuario = new TipoUsuario();
             }
             
-            tipoUsuario.setCodigoTipo((int)data.get(13));
+            tipoUsuario.setCodigoTipo((int)data.get(14));
             tipoUsuario.load();
         }
     }
