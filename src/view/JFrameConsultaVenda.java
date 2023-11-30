@@ -1,6 +1,7 @@
 
 package view;
 
+import controller.LogTrack;
 import controller.ResultSetTableModel;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
@@ -203,8 +204,12 @@ public class JFrameConsultaVenda extends javax.swing.JFrame {
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         System.out.println("Adicionar");        
         //chamar a nova janela
-        JFrameCRUDVenda crud;
-        crud = new JFrameCRUDVenda(null/*janela de adicionar não tem dados para passar*/, false);
+        JFrameCRUDVenda crud = null;
+        try{
+            crud = new JFrameCRUDVenda(null/*janela de adicionar não tem dados para passar*/, false);
+        }catch (Exception ex){
+            LogTrack.getInstance().addException(ex, true, this);
+        }
         crud.addWindowListener( new java.awt.event.WindowAdapter() {
             @Override
             //metodo para atualizar a tabela ao fechar a Janela CRUD

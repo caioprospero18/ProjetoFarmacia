@@ -1,6 +1,7 @@
 
 package view;
 
+import controller.LogTrack;
 import controller.ResultSetTableModel;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
@@ -16,7 +17,7 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
     private boolean select;//define se é uma janela de seleção
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     
-    private String query = "SELECT u.codigo_usuario as ID, u.nome_completo as Nome, u.cpf as CPF, u.celular as Celular, t.nome as Tipo "
+    private String query = "SELECT u.codigo_usuario as ID, u.nome_completo as Nome, u.email as Email, u.cpf as CPF, u.celular as Celular, t.nome as Tipo "
             + "FROM usuarios u join tipo_usuario t";
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
@@ -203,8 +204,12 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         System.out.println("Adicionar");        
         //chamar a nova janela
-        JFrameCRUDUsuario crud;
-        crud = new JFrameCRUDUsuario(null/*janela de adicionar não tem dados para passar*/, false);
+        JFrameCRUDUsuario crud = null;
+        try{
+            crud = new JFrameCRUDUsuario(null/*janela de adicionar não tem dados para passar*/, false);
+        }catch(Exception ex){
+            LogTrack.getInstance().addException(ex, true, this);
+        }
         crud.addWindowListener( new java.awt.event.WindowAdapter() {
             @Override
             //metodo para atualizar a tabela ao fechar a Janela CRUD
@@ -255,6 +260,8 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFrameConsultaUsuario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

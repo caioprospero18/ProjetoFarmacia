@@ -40,8 +40,8 @@ public class TipoUsuario extends DataAccessObject{
     }
     
     public void fill(ArrayList<Object> data){
-        this.codigoTipo = (int)data.get(0);
-        this.nome = (String)data.get(1);
+        codigoTipo = (int)data.get(0);
+        nome = (String)data.get(1);
 
     }
     

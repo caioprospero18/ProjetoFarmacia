@@ -12,15 +12,27 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
     private TipoUsuario tipo;
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     
-    public JFrameCRUDUsuario(Usuario usuario, boolean disconnectOnClose) {
+    public JFrameCRUDUsuario(Usuario usuario, boolean disconnectOnClose) throws Exception {
         initComponents();
         
         if( usuario == null){
             this.usuario = new Usuario();
         } else{
             this.usuario = usuario;
-            dataUp();//levar os dados para janela
+            
+            if( this.usuario.getTipoUsuario() != null ) {         
+                
+                this.tipo = new TipoUsuario();
+                this.tipo.setCodigoTipo( this.usuario.getTipoUsuario().getCodigoTipo() );
+                this.tipo.load();
+                
+            }
+            
+            dataUp();
+            jTextFieldID.setEnabled(false);
         }
+        
+        
         
         this.disconnectOnClose = disconnectOnClose;
     }
@@ -55,6 +67,10 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
         if ( jTextFieldTipo.getText().isEmpty()){
             throw new Exception("Informe Tipo Usuário.");
         }
+        
+        if (jTextFieldEmail.getText().isEmpty()){
+            throw new Exception("Informe o E-mail.");
+        }
     }
 
     private void dataDown() throws Exception{
@@ -71,6 +87,7 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
         usuario.setEstado(jTextFieldEstado.getText());
         usuario.setTelefone( jTextFieldTelefone.getText() );
         usuario.setCelular( jTextFieldCelular.getText() );
+        usuario.setEmail(jTextFieldEmail.getText());
         usuario.setSenhaAcesso(jPasswordFieldSenha.getText() );
         usuario.setTipoUsuario(tipo); 
     }
@@ -89,6 +106,7 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
         jTextFieldEstado.setText(usuario.getEstado());
         jTextFieldTelefone.setText( usuario.getTelefone() );
         jTextFieldCelular.setText( usuario.getCelular() );
+        jTextFieldEmail.setText(usuario.getEmail());
         jPasswordFieldSenha.setText( usuario.getSenhaAcesso() );
         if(usuario.getTipoUsuario().getNome()!= null){
             jTextFieldTipo.setText(usuario.getTipoUsuario().getNome());

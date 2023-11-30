@@ -12,7 +12,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private Usuario usuario;
     
     
-    public JFramePrincipal() {
+    public JFramePrincipal(Usuario usuario) {
         initComponents();
         
         jMenuUsuario.setText("Bem Vindo "+usuario.getNomeCompleto());
@@ -28,6 +28,8 @@ public class JFramePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButtonRealizarVenda = new javax.swing.JButton();
+        jButtonConsultarVendas = new javax.swing.JButton();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuAdm = new javax.swing.JMenu();
         jMenuItemConsultaCategoria = new javax.swing.JMenuItem();
@@ -35,19 +37,33 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItemConsultaReceita = new javax.swing.JMenuItem();
         jMenuItemConsultaTipoUsuario = new javax.swing.JMenuItem();
         jMenuItemConsultaUsuarios = new javax.swing.JMenuItem();
-        jMenuItemConsultaVenda = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemCadastroCategoria = new javax.swing.JMenuItem();
         jMenuCadastroProduto = new javax.swing.JMenuItem();
         jMenuItemCadastroReceita = new javax.swing.JMenuItem();
         jMenuItemCadastroTipoUsuario = new javax.swing.JMenuItem();
         jMenuItemCadastroUsuarios = new javax.swing.JMenuItem();
-        jMenuItemCadastroVenda = new javax.swing.JMenuItem();
         jMenuUsuario = new javax.swing.JMenu();
         jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Tela Principal");
+
+        jButtonRealizarVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButtonRealizarVenda.setText("Realizar venda");
+        jButtonRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRealizarVendaActionPerformed(evt);
+            }
+        });
+
+        jButtonConsultarVendas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButtonConsultarVendas.setText("Consultar vendas realizadas");
+        jButtonConsultarVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarVendasActionPerformed(evt);
+            }
+        });
 
         jMenuAdm.setText("Administrativo");
 
@@ -90,14 +106,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
             }
         });
         jMenuAdm.add(jMenuItemConsultaUsuarios);
-
-        jMenuItemConsultaVenda.setText("Consulta Venda");
-        jMenuItemConsultaVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemConsultaVendaActionPerformed(evt);
-            }
-        });
-        jMenuAdm.add(jMenuItemConsultaVenda);
         jMenuAdm.add(jSeparator1);
 
         jMenuItemCadastroCategoria.setText("Cadastro Categoria");
@@ -140,14 +148,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenuAdm.add(jMenuItemCadastroUsuarios);
 
-        jMenuItemCadastroVenda.setText("Cadastro Venda");
-        jMenuItemCadastroVenda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemCadastroVendaActionPerformed(evt);
-            }
-        });
-        jMenuAdm.add(jMenuItemCadastroVenda);
-
         jMenuBar.add(jMenuAdm);
 
         jMenuItemSair.setText("Sair");
@@ -166,11 +166,21 @@ public class JFramePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(227, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonConsultarVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonRealizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(214, 214, 214))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(105, Short.MAX_VALUE)
+                .addComponent(jButtonRealizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addComponent(jButtonConsultarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(100, 100, 100))
         );
 
         pack();
@@ -226,16 +236,6 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemConsultaUsuariosActionPerformed
 
-    private void jMenuItemConsultaVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaVendaActionPerformed
-        try{
-            JFrameConsultaVenda jFrameConsultaVenda;
-            jFrameConsultaVenda = new JFrameConsultaVenda(null, false, true);
-            jFrameConsultaVenda.setVisible(true);
-        } catch (Exception ex){
-            LogTrack.getInstance().addException(ex, true, this);
-        }
-    }//GEN-LAST:event_jMenuItemConsultaVendaActionPerformed
-
     private void jMenuItemCadastroCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroCategoriaActionPerformed
         try{
             JFrameCRUDCategoria jFrameCRUDCategoria;
@@ -286,7 +286,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemCadastroUsuariosActionPerformed
 
-    private void jMenuItemCadastroVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroVendaActionPerformed
+    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
+        logout();
+    }//GEN-LAST:event_jMenuItemSairActionPerformed
+
+    private void jButtonRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRealizarVendaActionPerformed
         try{
             JFrameCRUDVenda jFrameCRUDVenda;
             jFrameCRUDVenda = new JFrameCRUDVenda(null, true);
@@ -294,11 +298,17 @@ public class JFramePrincipal extends javax.swing.JFrame {
         } catch (Exception ex){
             LogTrack.getInstance().addException(ex, true, this);
         }
-    }//GEN-LAST:event_jMenuItemCadastroVendaActionPerformed
+    }//GEN-LAST:event_jButtonRealizarVendaActionPerformed
 
-    private void jMenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemSairActionPerformed
-        logout();
-    }//GEN-LAST:event_jMenuItemSairActionPerformed
+    private void jButtonConsultarVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarVendasActionPerformed
+        try{
+            JFrameConsultaVenda jFrameConsultaVenda;
+            jFrameConsultaVenda = new JFrameConsultaVenda(null, false, true);
+            jFrameConsultaVenda.setVisible(true);
+        } catch (Exception ex){
+            LogTrack.getInstance().addException(ex, true, this);
+        }
+    }//GEN-LAST:event_jButtonConsultarVendasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,16 +336,20 @@ public class JFramePrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JFramePrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            private Usuario usuario;
             public void run() {
-                new JFramePrincipal().setVisible(true);
+                new JFramePrincipal(this.usuario).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonConsultarVendas;
+    private javax.swing.JButton jButtonRealizarVenda;
     private javax.swing.JMenu jMenuAdm;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuCadastroProduto;
@@ -344,12 +358,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemCadastroReceita;
     private javax.swing.JMenuItem jMenuItemCadastroTipoUsuario;
     private javax.swing.JMenuItem jMenuItemCadastroUsuarios;
-    private javax.swing.JMenuItem jMenuItemCadastroVenda;
     private javax.swing.JMenuItem jMenuItemConsultaCategoria;
     private javax.swing.JMenuItem jMenuItemConsultaReceita;
     private javax.swing.JMenuItem jMenuItemConsultaTipoUsuario;
     private javax.swing.JMenuItem jMenuItemConsultaUsuarios;
-    private javax.swing.JMenuItem jMenuItemConsultaVenda;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuUsuario;
     private javax.swing.JPopupMenu.Separator jSeparator1;

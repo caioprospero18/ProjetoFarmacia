@@ -15,14 +15,17 @@ public class JFrameLogin extends javax.swing.JFrame {
 
     public JFrameLogin() {
         initComponents();
+        
+        usuario = new Usuario();
     }
 
     private void login(){
-        usuario = new Usuario();
+        
         
         JFramePrincipal jFramePrincipal;
-        jFramePrincipal = new JFramePrincipal();
+        jFramePrincipal = new JFramePrincipal(this.usuario);
         jFramePrincipal.setVisible(true);
+        dispose();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -36,12 +39,14 @@ public class JFrameLogin extends javax.swing.JFrame {
         jPasswordFieldSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Farmácia");
+        setTitle("NacaFarm");
 
         jPanelLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabelUsuario.setText("Usuário");
+
+        jTextFieldUsuario.setText("@nacafarm.com");
 
         jLabelSenha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabelSenha.setText("Senha");
@@ -112,21 +117,28 @@ public class JFrameLogin extends javax.swing.JFrame {
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLoginActionPerformed
         try {
             
-            usuario.setEmail( ( jTextFieldUsuario.getText() ) );
+            usuario.setEmail(  jTextFieldUsuario.getText() );
+
             usuario.load();
+
+
             
             Usuario usLogin = new Usuario();
             
-            usLogin.setEmail( ( jTextFieldUsuario.getText() ) );
+            usLogin.setEmail( jTextFieldUsuario.getText() );
+            usLogin.setCodigoUsuario(usuario.getCodigoUsuario() );
             usLogin.setSenhaAcesso( jPasswordFieldSenha.getText() );
+            
             
             if( usuario.getSenhaAcesso().equals( 
                     usLogin.getSenhaAcesso() ) ) {
                 login();
                 usuario.disconnectFromDatabase();
+                System.out.println("Login realizado.");
             } else {
-                throw new Exception("Senha Inválida!");
+                throw new Exception("Usuário ou senha inválidos!");
             }
+            
         
         } catch(Exception ex) {
             LogTrack.getInstance().addException(ex, true, this);
@@ -158,6 +170,22 @@ public class JFrameLogin extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(JFrameLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

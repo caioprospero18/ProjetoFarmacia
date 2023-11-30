@@ -227,26 +227,26 @@ public class Usuario extends DataAccessObject{
     }
     
     public String getWhereClauseForOneEntry(){
-        return " codigo_usuario = " + this.codigoUsuario;
+        return " email = '" + this.email+ "'";
     }
     
     public void fill(ArrayList<Object> data) throws Exception{
-        this.codigoUsuario = (int)data.get(0);
-        this.nomeCompleto = (String)data.get(1);
+        codigoUsuario = (int)data.get(0);
+        nomeCompleto = (String)data.get(1);
         if ( data.get(2) != null){
-            this.dataNascimento= data.get(2).toString();
+            dataNascimento= data.get(2).toString();
         }
-        this.cpf = (String)data.get(3);
-        this.endereco = (String)data.get(4);
-        this.numero = (String)data.get(5);
-        this.complemento = (String)data.get(6);
-        this.bairro = (String)data.get(7);
-        this.cidade = (String)data.get(8);
-        this.estado = (String)data.get(9);
-        this.telefone= (String)data.get(10);
-        this.celular= (String)data.get(11);
-        this.email= (String)data.get(12);
-        this.senhaAcesso = (String)data.get(13);
+        cpf = (String)data.get(3);
+        endereco = (String)data.get(4);
+        numero = (String)data.get(5);
+        complemento = (String)data.get(6);
+        bairro = (String)data.get(7);
+        cidade = (String)data.get(8);
+        estado = (String)data.get(9);
+        telefone= (String)data.get(10);
+        celular= (String)data.get(11);
+        email= (String)data.get(12);
+        senhaAcesso = (String)data.get(13);
         if( data.get(14) != null ){
             if( tipoUsuario == null){
                 tipoUsuario = new TipoUsuario();
