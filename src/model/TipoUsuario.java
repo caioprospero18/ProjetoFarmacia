@@ -8,6 +8,9 @@ public class TipoUsuario extends DataAccessObject{
     
     private int codigoTipo;
     private String nome;
+    private String moduloAdministrativo;
+    private String moduloVenda;
+    private String moduloCadastrarReceita;
     
     public TipoUsuario(){
         super("tipo_usuario");
@@ -27,6 +30,19 @@ public class TipoUsuario extends DataAccessObject{
         }
     }
 
+    public void setModuloAdministrativo(String moduloAdministrativo) {
+        this.moduloAdministrativo = moduloAdministrativo;
+    }
+
+    public void setModuloVenda(String moduloVenda) {
+        this.moduloVenda = moduloVenda;
+    }
+
+    public void setModuloCadastrarReceita(String moduloCadastrarReceita) {
+        this.moduloCadastrarReceita = moduloCadastrarReceita;
+    }
+    
+
     public int getCodigoTipo() {
         return codigoTipo;
     }
@@ -34,6 +50,20 @@ public class TipoUsuario extends DataAccessObject{
     public String getNome() {
         return nome;
     }
+
+    public String getModuloAdministrativo() {
+        return moduloAdministrativo;
+    }
+
+    public String getModuloVenda() {
+        return moduloVenda;
+    }
+
+    public String getModuloCadastrarReceita() {
+        return moduloCadastrarReceita;
+    }
+    
+    
     
     public String getWhereClauseForOneEntry(){
         return " codigo_tipo = " + this.codigoTipo;

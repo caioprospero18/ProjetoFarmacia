@@ -8,8 +8,7 @@ import java.util.ArrayList;
 public class Venda extends DataAccessObject{
     
     private int codigoVenda;
-    private String data;
-    private String hora;
+    private String dataHoraVenda;
     private float valorVenda;
     private Usuario cliente;
     private Usuario funcionario;
@@ -25,19 +24,13 @@ public class Venda extends DataAccessObject{
         }
     }
 
-    public void setData(String data) {
-        if( data != this.data){
-            this.data = data;
-            addChange("data", this.data);
+    public void setDataHoraVenda(String data) {
+        if( dataHoraVenda != this.dataHoraVenda){
+            this.dataHoraVenda = dataHoraVenda;
+            addChange("data_hora_venda", this.dataHoraVenda);
         }
     }
 
-    public void setHora(String hora) {
-        if( hora != this.hora){
-            this.hora = hora;
-            addChange("hora", this.hora);
-        }
-    }
 
     public void setValorVenda(float valorVenda) {
         if( valorVenda != this.valorVenda){
@@ -75,13 +68,10 @@ public class Venda extends DataAccessObject{
         return codigoVenda;
     }
 
-    public String getData() {
-        return data;
+    public String getDataHoraVenda() {
+        return dataHoraVenda;
     }
 
-    public String getHora() {
-        return hora;
-    }
 
     public float getValorVenda() {
         return valorVenda;
@@ -127,23 +117,22 @@ public class Venda extends DataAccessObject{
     
     public void fill(ArrayList<Object> data) throws Exception{
         this.codigoVenda = (int)data.get(0);
-        this.data = data.get(1).toString();
-        this.hora = data.get(2).toString();
-        this.valorVenda = (float)data.get(3);
-        if( data.get(4) != null ){
+        this.dataHoraVenda = data.get(1).toString();
+        this.valorVenda = (float)data.get(2);
+        if( data.get(3) != null ){
             if( cliente == null){
                 cliente = new Usuario();
             }
             
-            cliente.setCodigoUsuario((int)data.get(4));
+            cliente.setCodigoUsuario((int)data.get(3));
             cliente.load();
         }
-        if( data.get(5) != null ){
+        if( data.get(4) != null ){
             if( funcionario == null){
                 funcionario = new Usuario();
             }
             
-            funcionario.setCodigoUsuario((int)data.get(5));
+            funcionario.setCodigoUsuario((int)data.get(4));
             funcionario.load();
         }
     }

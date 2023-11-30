@@ -70,6 +70,11 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
         
         if (jTextFieldEmail.getText().isEmpty()){
             throw new Exception("Informe o E-mail.");
+        } else {
+            if(!jTextFieldEmail.getText().isEmpty()
+                    &&jTextFieldEmail.equals(usuario.getEmail())){
+                throw new Exception("E-mail já cadastrado.");
+            }
         }
     }
 

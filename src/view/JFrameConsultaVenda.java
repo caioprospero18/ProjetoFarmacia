@@ -16,8 +16,8 @@ public class JFrameConsultaVenda extends javax.swing.JFrame {
     private boolean select;//define se é uma janela de seleção
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     
-    private String query = "SELECT v.codigo_venda as ID, v.data as Data, v.hora as Hora,"
-            + "v.quantidade as Quantidade, v.valor_venda as Valor,"
+    private String query = "SELECT v.codigo_venda as ID, v.data_hora_venda as Data_Hora,"
+            + " v.valor_venda as Valor,"
             + "u.nome_completo as Nome_Cliente, p.nome_produto as Produto FROM vendas v join usuarios u join produtos p";
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
