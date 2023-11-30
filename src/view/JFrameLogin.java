@@ -127,7 +127,6 @@ public class JFrameLogin extends javax.swing.JFrame {
             } else {
                 throw new Exception("Senha Inválida!");
             }
-            
         
         } catch(Exception ex) {
             LogTrack.getInstance().addException(ex, true, this);

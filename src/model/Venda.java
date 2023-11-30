@@ -10,10 +10,9 @@ public class Venda extends DataAccessObject{
     private int codigoVenda;
     private String data;
     private String hora;
-    private int quantidade;
     private float valorVenda;
-    private Usuario usuario;
-    private Produto produto;
+    private Usuario cliente;
+    private Usuario funcionario;
     
     public Venda(){
         super("vendas");
@@ -40,13 +39,6 @@ public class Venda extends DataAccessObject{
         }
     }
 
-    public void setQuantidade(int quantidade) {
-        if( quantidade != this.quantidade){
-            this.quantidade = quantidade;
-            addChange("quantidade", this.quantidade);
-        }
-    }
-
     public void setValorVenda(float valorVenda) {
         if( valorVenda != this.valorVenda){
             this.valorVenda = valorVenda;
@@ -54,51 +46,26 @@ public class Venda extends DataAccessObject{
         }
     }
 
-    public void setUsuario(Usuario usuario) throws Exception {
-        if( this.usuario == null ){
+    public void setUsuario(Usuario cliente) throws Exception {
+        if( this.cliente == null ){
            
-           if( usuario != null ){
-               this.usuario = new Usuario();
-               this.usuario.setCodigoUsuario(usuario.getCodigoUsuario());
-               this.usuario.load();
-               addChange("codigo_usuario", this.usuario.getCodigoUsuario());
+           if( cliente != null ){
+               this.cliente = new Usuario();
+               this.cliente.setCodigoUsuario(cliente.getCodigoUsuario());
+               this.cliente.load();
+               addChange("codigo_usuario", this.cliente.getCodigoUsuario());
            }
        }else{
-           if( usuario == null){
+           if( cliente == null){
                
-               this.usuario = null;
-               addChange("codigo_usuario", null);
+               this.cliente = null;
+               addChange("codigo_cliente", null);
            }else{
                
-               if( !this.usuario.equals( usuario ) ){
-                   this.usuario.setCodigoUsuario(usuario.getCodigoUsuario());
-                   this.usuario.load();
-                   addChange("codigo_usuario", this.usuario.getCodigoUsuario());
-               }
-           }
-       }
-    }
-
-    public void setProduto(Produto produto) throws Exception {
-        if( this.produto == null ){
-           
-           if( produto != null ){
-               this.produto = new Produto();
-               this.produto.setCodigoProduto(produto.getCodigoProduto());
-               this.produto.load();
-               addChange("codigo_produto", this.produto.getCodigoProduto());
-           }
-       }else{
-           if( produto == null){
-               
-               this.produto = null;
-               addChange("codigo_produto", null);
-           }else{
-               
-               if( !this.produto.equals( produto ) ){
-                   this.produto.setCodigoProduto(produto.getCodigoProduto());
-                   this.produto.load();
-                   addChange("codigo_produto", this.produto.getCodigoProduto());
+               if( !this.cliente.equals( cliente ) ){
+                   this.cliente.setCodigoUsuario(cliente.getCodigoUsuario());
+                   this.cliente.load();
+                   addChange("codigo_cliente", this.cliente.getCodigoUsuario());
                }
            }
        }
@@ -116,20 +83,41 @@ public class Venda extends DataAccessObject{
         return hora;
     }
 
-    public int getQuantidade() {
-        return quantidade;
-    }
-
     public float getValorVenda() {
         return valorVenda;
     }
 
     public Usuario getUsuario() {
-        return usuario;
+        return cliente;
+    }
+    
+    public Usuario getFuncionario() {
+        return funcionario;
     }
 
-    public Produto getProduto() {
-        return produto;
+    public void setFuncionario(Usuario funcionario) throws Exception{
+        if( this.funcionario == null ){
+           
+           if( funcionario != null ){
+               this.funcionario = new Usuario();
+               this.funcionario.setCodigoUsuario(funcionario.getCodigoUsuario());
+               this.funcionario.load();
+               addChange("codigo_funcionario", this.funcionario.getCodigoUsuario());
+           }
+       }else{
+           if( funcionario == null){
+               
+               this.funcionario = null;
+               addChange("codigo_funcionario", null);
+           }else{
+               
+               if( !this.funcionario.equals( funcionario ) ){
+                   this.funcionario.setCodigoUsuario(funcionario.getCodigoUsuario());
+                   this.funcionario.load();
+                   addChange("codigo_funcionario", this.funcionario.getCodigoUsuario());
+               }
+           }
+       }
     }
     
     
@@ -141,23 +129,22 @@ public class Venda extends DataAccessObject{
         this.codigoVenda = (int)data.get(0);
         this.data = data.get(1).toString();
         this.hora = data.get(2).toString();
-        this.quantidade = (int)data.get(3);
-        this.valorVenda = (float)data.get(4);
-        if( data.get(5) != null ){
-            if( usuario == null){
-                usuario = new Usuario();
+        this.valorVenda = (float)data.get(3);
+        if( data.get(4) != null ){
+            if( cliente == null){
+                cliente = new Usuario();
             }
             
-            usuario.setCodigoUsuario((int)data.get(5));
-            usuario.load();
+            cliente.setCodigoUsuario((int)data.get(4));
+            cliente.load();
         }
-        if( data.get(6) != null ){
-            if( produto == null){
-                produto = new Produto();
+        if( data.get(5) != null ){
+            if( funcionario == null){
+                funcionario = new Usuario();
             }
             
-            produto.setCodigoProduto((int)data.get(6));
-            produto.load();
+            funcionario.setCodigoUsuario((int)data.get(5));
+            funcionario.load();
         }
     }
 }
