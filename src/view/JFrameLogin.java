@@ -40,6 +40,11 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NacaFarm");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanelLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -100,7 +105,7 @@ public class JFrameLogin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(243, 243, 243)
                 .addComponent(jPanelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(211, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,6 +149,10 @@ public class JFrameLogin extends javax.swing.JFrame {
             LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_jButtonLoginActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

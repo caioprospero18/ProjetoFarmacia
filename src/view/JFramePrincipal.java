@@ -22,6 +22,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         JFrameLogin jFrameLogin;
         jFrameLogin = new JFrameLogin();
         jFrameLogin.setVisible(true);
+        dispose();
     }
 
     @SuppressWarnings("unchecked")

@@ -1,6 +1,7 @@
 
 package view;
 
+import controller.LogTrack;
 import controller.ResultSetTableModel;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
@@ -157,7 +158,7 @@ public class JFrameConsultaReceita extends javax.swing.JFrame {
                 this.receita.load();
                 this.dispatchEvent(new WindowEvent( this, WindowEvent.WINDOW_CLOSING ) );
             } catch ( Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
             }
         }
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
@@ -194,7 +195,7 @@ public class JFrameConsultaReceita extends javax.swing.JFrame {
                 crud.setVisible(true);
                                 
             } catch (Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
             }
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
@@ -225,7 +226,7 @@ public class JFrameConsultaReceita extends javax.swing.JFrame {
                 result.disconnectFromDatabase();
             }
         } catch ( Exception ex ) {
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_formWindowClosing
 

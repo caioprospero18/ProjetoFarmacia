@@ -5,6 +5,9 @@ import controller.LogTrack;
 import controller.ResultSetTableModel;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import static java.time.LocalDateTime.now;
+import java.time.format.DateTimeFormatter;
 import model.Produto;
 import model.TipoUsuario;
 import model.Usuario;
@@ -17,6 +20,11 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private Usuario usuario;
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     private ResultSetTableModel result;
+    DateTimeFormatter dtf;
+    LocalDateTime now;
+
+    
+    
     
     private String query = "SELECT p.nome_produto as Produto, vp.quantidade as Quantidade, p.receita as Receita from venda_produto vp \n" +
                            "inner join produtos p on p.codigo_produto = vp.codigo_produto \n" +
@@ -24,6 +32,11 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
 
     public JFrameCRUDVenda(Venda venda, boolean disconnectOnClose) throws SQLException {
         initComponents();
+        dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        now = LocalDateTime.now();
+        
+        jTextFieldDataHora.setText(String.valueOf(dtf.format(now)));
+        
         
         if( venda == null){
             this.venda = new Venda();
@@ -57,17 +70,18 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private void dataDown() throws Exception{
         //data.setter TRAZER OS DADOS DA JANELA PARA O OBJETO
         venda.setCodigoVenda(Integer.parseInt(jTextFieldID.getText() ) );
-        venda.setDataHoraVenda(jTextFieldData.getText());
+        venda.setDataHoraVenda(jTextFieldDataHora.getText());
         //venda.setQuantidade(Integer.parseInt(jSpinnerQuant.getValue().toString()));
-        venda.setValorVenda(Float.parseFloat(jTextFieldValor.getText()) );
+        //venda.setValorVenda(Float.parseFloat(jTextFieldValor.getText()) );
         venda.setUsuario(usuario);
         //venda.setProduto(produto);
+        
     }
     
     private void dataUp(){
         //data.getter LEVAR OS DADOS DO OBJETO PARA A JANELA
         jTextFieldID.setText(String.valueOf(venda.getCodigoVenda()) );
-        jTextFieldData.setText(venda.getDataHoraVenda());
+        jTextFieldDataHora.setText(String.valueOf(venda.getDataHoraVenda()));
         //jSpinnerQuant.setText(String.valueOf(venda.getQuantidade()));
         jTextFieldValor.setText(String.valueOf(venda.getValorVenda())); 
         if(venda.getUsuario().getNomeCompleto()!= null){
@@ -84,8 +98,8 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
 
         jLabelID = new javax.swing.JLabel();
         jTextFieldID = new javax.swing.JTextField();
-        jLabelData = new javax.swing.JLabel();
-        jTextFieldData = new javax.swing.JTextField();
+        jLabelDataHora = new javax.swing.JLabel();
+        jTextFieldDataHora = new javax.swing.JTextField();
         jLabelQuantidade = new javax.swing.JLabel();
         jLabelValor = new javax.swing.JLabel();
         jTextFieldValor = new javax.swing.JTextField();
@@ -113,7 +127,9 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
 
         jLabelID.setText("ID:");
 
-        jLabelData.setText("Data e Hora:");
+        jLabelDataHora.setText("Data e Hora:");
+
+        jTextFieldDataHora.setEditable(false);
 
         jLabelQuantidade.setText("Quantidade:");
 
@@ -205,9 +221,9 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelData)
+                                .addComponent(jLabelDataHora)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldData))
+                                .addComponent(jTextFieldDataHora))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabelUsuario)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -252,8 +268,8 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelID)
                     .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelData)
-                    .addComponent(jTextFieldData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelDataHora)
+                    .addComponent(jTextFieldDataHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -402,7 +418,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButtonSelecionarProduto;
     private javax.swing.JButton jButtonSelecionarUsuario;
-    private javax.swing.JLabel jLabelData;
+    private javax.swing.JLabel jLabelDataHora;
     private javax.swing.JLabel jLabelID;
     private javax.swing.JLabel jLabelProduto;
     private javax.swing.JLabel jLabelQuantidade;
@@ -411,7 +427,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinnerQuant;
     private javax.swing.JTable jTableProdutos;
-    private javax.swing.JTextField jTextFieldData;
+    private javax.swing.JTextField jTextFieldDataHora;
     private javax.swing.JTextField jTextFieldID;
     private javax.swing.JTextField jTextFieldProduto;
     private javax.swing.JTextField jTextFieldUsuario;

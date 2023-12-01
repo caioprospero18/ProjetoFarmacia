@@ -227,7 +227,7 @@ public class Usuario extends DataAccessObject{
     }
     
     public String getWhereClauseForOneEntry(){
-        return " email = '" + this.email+ "'";
+        return " email = '" + this.email+ "'";        
     }
     
     public void fill(ArrayList<Object> data) throws Exception{

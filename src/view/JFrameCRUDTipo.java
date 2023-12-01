@@ -41,13 +41,50 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
     private void dataDown(){
         //data.setter TRAZER OS DADOS DA JANELA PARA O OBJETO
         tipo.setCodigoTipo(Integer.parseInt(jTextFieldID.getText() ) );
-        tipo.setNome(jTextFieldNome.getText());       
+        tipo.setNome(jTextFieldNome.getText());    
+        if( jCheckBoxAdministrativo.isSelected() ) {
+            tipo.setModuloAdministrativo("S");
+        } else {
+            tipo.setModuloAdministrativo("N");
+        }
+        
+        if( jCheckBoxVendas.isSelected() ) {
+            tipo.setModuloVenda("S");
+        } else {
+            tipo.setModuloVenda("N");
+        }
+        
+        if( jCheckBoxCadastroReceita.isSelected() ) {
+            tipo.setModuloCadastrarReceita("S");
+        } else {
+            tipo.setModuloCadastrarReceita("N");
+        }
     }
     
     private void dataUp(){
         //data.getter LEVAR OS DADOS DO OBJETO PARA A JANELA
         jTextFieldID.setText(String.valueOf(tipo.getCodigoTipo()) );
         jTextFieldNome.setText(tipo.getNome());
+        if( ( tipo.getModuloAdministrativo() != null ) &&
+            ( tipo.getModuloAdministrativo().equals("S") ) ) {
+                jCheckBoxAdministrativo.setSelected( true );
+        } else {
+            jCheckBoxAdministrativo.setSelected( false );
+        }
+        
+        if( ( tipo.getModuloVenda()!= null ) &&
+            ( tipo.getModuloVenda().equals("S") ) ) {
+                jCheckBoxVendas.setSelected( true );
+        } else {
+            jCheckBoxVendas.setSelected( false );
+        }
+        
+        if( ( tipo.getModuloCadastrarReceita()!= null ) &&
+            ( tipo.getModuloCadastrarReceita().equals("S") ) ) {
+                jCheckBoxCadastroReceita.setSelected( true );
+        } else {
+            jCheckBoxCadastroReceita.setSelected( false );
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -59,6 +96,9 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
         jTextFieldNome = new javax.swing.JTextField();
         jButtonExcluir = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
+        jCheckBoxAdministrativo = new javax.swing.JCheckBox();
+        jCheckBoxVendas = new javax.swing.JCheckBox();
+        jCheckBoxCadastroReceita = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -85,6 +125,12 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
             }
         });
 
+        jCheckBoxAdministrativo.setText("Administrativo");
+
+        jCheckBoxVendas.setText("Vendas");
+
+        jCheckBoxCadastroReceita.setText("Cadastro de receitas");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,16 +141,22 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56)
+                        .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jCheckBoxAdministrativo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldNome, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
-                        .addComponent(jButtonSalvar)))
+                        .addComponent(jButtonSalvar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jCheckBoxVendas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(jCheckBoxCadastroReceita)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -117,7 +169,12 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
                         .addComponent(jLabelNome)
                         .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabelID))
-                .addGap(48, 48, 48)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCheckBoxAdministrativo)
+                    .addComponent(jCheckBoxVendas)
+                    .addComponent(jCheckBoxCadastroReceita))
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExcluir)
                     .addComponent(jButtonSalvar))
@@ -165,6 +222,9 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JCheckBox jCheckBoxAdministrativo;
+    private javax.swing.JCheckBox jCheckBoxCadastroReceita;
+    private javax.swing.JCheckBox jCheckBoxVendas;
     private javax.swing.JLabel jLabelID;
     private javax.swing.JLabel jLabelNome;
     private javax.swing.JTextField jTextFieldID;

@@ -18,7 +18,7 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     
     private String query = "SELECT u.codigo_usuario as ID, u.nome_completo as Nome, u.email as Email, u.cpf as CPF, u.celular as Celular, t.nome as Tipo "
-            + "FROM usuarios u join tipo_usuario t";
+            + "FROM usuarios u join tipo_usuario t on t.codigo_tipo = u.codigo_tipo";
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
 
@@ -159,7 +159,7 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
                 this.usuario.load();
                 this.dispatchEvent(new WindowEvent( this, WindowEvent.WINDOW_CLOSING ) );
             } catch ( Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
             }
         }
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
@@ -170,10 +170,11 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
         if( row != -1){
             System.out.println("Alterar");
             
-            int codigo = (int) result.getValueAt(row, 0);
-            
-            usuario = new Usuario();
-            usuario.setCodigoUsuario(codigo);
+            //int codigo = (int) result.getValueAt(row, 0);
+            String email = (String)result.getValueAt(row, 2);
+            Usuario usuario = new Usuario();
+            //usuario.setCodigoUsuario(codigo);
+            usuario.setEmail(email);
             try{
                 usuario.load();
                 
@@ -196,7 +197,7 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
                 crud.setVisible(true);
                                 
             } catch (Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
             }
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
@@ -231,7 +232,7 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
                 result.disconnectFromDatabase();
             }
         } catch ( Exception ex ) {
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_formWindowClosing
 

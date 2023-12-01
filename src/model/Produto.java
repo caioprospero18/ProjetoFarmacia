@@ -99,12 +99,12 @@ public class Produto extends DataAccessObject{
     }
     
     public void fill(ArrayList<Object> data) throws Exception{
-        this.codigoProduto = (int)data.get(0);
-        this.nomeProduto = (String)data.get(1);
-        this.valorProduto = (float)data.get(2);
-        this.quantidadeEstoque = (int)data.get(3);
-        this.tarja = (String)data.get(4);
-        this.receita = (String)data.get(5);
+        codigoProduto = (int)data.get(0);
+        nomeProduto = (String)data.get(1);
+        valorProduto = (float)data.get(2);
+        quantidadeEstoque = (int)data.get(3);
+        tarja = (String)data.get(4);
+        receita = (String)data.get(5);
         if( data.get(6) != null ){
             if( categoria == null){
                 categoria = new CategoriaProduto();

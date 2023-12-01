@@ -75,6 +75,11 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
                     &&jTextFieldEmail.equals(usuario.getEmail())){
                 throw new Exception("E-mail já cadastrado.");
             }
+            
+            if( !jTextFieldEmail.getText().isEmpty()
+                && !jTextFieldEmail.getText().matches("\\w+@nacafarm.com")){
+                throw new Exception("O servidor do e-mail precisa ser '@nacafarm.com'");
+            }
         }
     }
 
@@ -113,7 +118,7 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
         jTextFieldCelular.setText( usuario.getCelular() );
         jTextFieldEmail.setText(usuario.getEmail());
         jPasswordFieldSenha.setText( usuario.getSenhaAcesso() );
-        if(usuario.getTipoUsuario().getNome()!= null){
+        if(usuario.getTipoUsuario().getNome() != null){
             jTextFieldTipo.setText(usuario.getTipoUsuario().getNome());
         }
     }

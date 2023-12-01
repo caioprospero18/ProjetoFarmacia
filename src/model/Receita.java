@@ -126,10 +126,10 @@ public class Receita extends DataAccessObject{
     }
     
     public void fill(ArrayList<Object> data) throws Exception{
-        this.codigoReceita = (int)data.get(0);
-        this.nomeMedico = (String)data.get(1);
-        this.crm = (String)data.get(2);
-        this.cor = (String)data.get(3);
+        codigoReceita = (int)data.get(0);
+        nomeMedico = (String)data.get(1);
+        crm = (String)data.get(2);
+        cor = (String)data.get(3);
         if( data.get(4) != null ){
             if( produto == null){
                 produto = new Produto();

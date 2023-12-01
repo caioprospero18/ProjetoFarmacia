@@ -54,9 +54,9 @@ public class CategoriaProduto extends DataAccessObject{
     }
     
     public void fill(ArrayList<Object> data){
-        this.codigoCategoria = (int)data.get(0);
-        this.categoria = (String)data.get(1);
-        this.desconto = (float)data.get(2);
+        codigoCategoria = (int)data.get(0);
+        categoria = (String)data.get(1);
+        desconto = (float)data.get(2);
 
     }
     

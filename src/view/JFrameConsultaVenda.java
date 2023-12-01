@@ -18,7 +18,8 @@ public class JFrameConsultaVenda extends javax.swing.JFrame {
     
     private String query = "SELECT v.codigo_venda as ID, v.data_hora_venda as Data_Hora,"
             + " v.valor_venda as Valor,"
-            + "u.nome_completo as Nome_Cliente, p.nome_produto as Produto FROM vendas v join usuarios u join produtos p";
+            + "u.nome_completo as Nome_Cliente FROM vendas v join usuarios u "
+            + "on v.codigo_cliente = u.codigo_usuario";
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
 
@@ -159,7 +160,7 @@ public class JFrameConsultaVenda extends javax.swing.JFrame {
                 this.venda.load();
                 this.dispatchEvent(new WindowEvent( this, WindowEvent.WINDOW_CLOSING ) );
             } catch ( Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
             }
         }
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
@@ -196,7 +197,7 @@ public class JFrameConsultaVenda extends javax.swing.JFrame {
                 crud.setVisible(true);
                                 
             } catch (Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
             }
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
@@ -231,7 +232,7 @@ public class JFrameConsultaVenda extends javax.swing.JFrame {
                 result.disconnectFromDatabase();
             }
         } catch ( Exception ex ) {
-            ex.printStackTrace();
+            LogTrack.getInstance().addException(ex, true, this);
         }
     }//GEN-LAST:event_formWindowClosing
 

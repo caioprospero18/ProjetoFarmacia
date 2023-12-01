@@ -2,6 +2,8 @@
 package model;
 
 import controller.DataAccessObject;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 
@@ -12,6 +14,8 @@ public class Venda extends DataAccessObject{
     private float valorVenda;
     private Usuario cliente;
     private Usuario funcionario;
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+    LocalDateTime now = LocalDateTime.now();
     
     public Venda(){
         super("vendas");
@@ -26,7 +30,7 @@ public class Venda extends DataAccessObject{
 
     public void setDataHoraVenda(String data) {
         if( dataHoraVenda != this.dataHoraVenda){
-            this.dataHoraVenda = dataHoraVenda;
+            this.dataHoraVenda = dtf.format(now);
             addChange("data_hora_venda", this.dataHoraVenda);
         }
     }
@@ -63,28 +67,7 @@ public class Venda extends DataAccessObject{
            }
        }
     }
-
-    public int getCodigoVenda() {
-        return codigoVenda;
-    }
-
-    public String getDataHoraVenda() {
-        return dataHoraVenda;
-    }
-
-
-    public float getValorVenda() {
-        return valorVenda;
-    }
-
-    public Usuario getUsuario() {
-        return cliente;
-    }
     
-    public Usuario getFuncionario() {
-        return funcionario;
-    }
-
     public void setFuncionario(Usuario funcionario) throws Exception{
         if( this.funcionario == null ){
            
@@ -109,6 +92,27 @@ public class Venda extends DataAccessObject{
            }
        }
     }
+
+    public int getCodigoVenda() {
+        return codigoVenda;
+    }
+
+    public String getDataHoraVenda() {
+        return dataHoraVenda;
+    }
+
+
+    public float getValorVenda() {
+        return valorVenda;
+    }
+
+    public Usuario getUsuario() {
+        return cliente;
+    }
+    
+    public Usuario getFuncionario() {
+        return funcionario;
+    }
     
     
     public String getWhereClauseForOneEntry(){
@@ -116,9 +120,9 @@ public class Venda extends DataAccessObject{
     }
     
     public void fill(ArrayList<Object> data) throws Exception{
-        this.codigoVenda = (int)data.get(0);
-        this.dataHoraVenda = data.get(1).toString();
-        this.valorVenda = (float)data.get(2);
+        codigoVenda = (int)data.get(0);
+        dataHoraVenda = data.get(1).toString();
+        valorVenda = (float)data.get(2);
         if( data.get(3) != null ){
             if( cliente == null){
                 cliente = new Usuario();

@@ -1,6 +1,7 @@
 
 package view;
 
+import controller.LogTrack;
 import controller.ResultSetTableModel;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
@@ -49,6 +50,11 @@ public class JFrameConsultaTipo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Consulta de tipo de usuários");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTableConsulta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,7 +157,7 @@ public class JFrameConsultaTipo extends javax.swing.JFrame {
                 this.tipo.load();
                 this.dispatchEvent(new WindowEvent( this, WindowEvent.WINDOW_CLOSING ) );
             } catch ( Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
             }
         }
     }//GEN-LAST:event_jButtonSelecionarActionPerformed
@@ -188,7 +194,7 @@ public class JFrameConsultaTipo extends javax.swing.JFrame {
                 crud.setVisible(true);
                                 
             } catch (Exception ex){
-                ex.printStackTrace();
+                LogTrack.getInstance().addException(ex, true, this);
             }
         }
     }//GEN-LAST:event_jButtonAlterarActionPerformed
@@ -212,6 +218,16 @@ public class JFrameConsultaTipo extends javax.swing.JFrame {
         });
         crud.setVisible(true);
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        try {
+            if( this.disconnectOnClose ) {
+                result.disconnectFromDatabase();
+            }
+        } catch ( Exception ex ) {
+            LogTrack.getInstance().addException(ex, true, this);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

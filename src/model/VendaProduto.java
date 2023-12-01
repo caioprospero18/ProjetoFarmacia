@@ -90,7 +90,7 @@ public class VendaProduto extends DataAccessObject {
 
     @Override
     protected void fill(ArrayList<Object> data) throws Exception {
-        this.codigo = (int)data.get(0);
+        codigo = (int)data.get(0);
         if( data.get(1) != null ){
             if( produto == null){
                 produto = new Produto();

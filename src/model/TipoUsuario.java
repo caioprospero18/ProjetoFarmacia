@@ -72,7 +72,9 @@ public class TipoUsuario extends DataAccessObject{
     public void fill(ArrayList<Object> data){
         codigoTipo = (int)data.get(0);
         nome = (String)data.get(1);
-
+        moduloAdministrativo = (String)data.get(2);
+        moduloVenda = (String)data.get(3);
+        moduloCadastrarReceita = (String)data.get(4);
     }
     
     @Override
