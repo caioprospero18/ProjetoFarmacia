@@ -18,7 +18,7 @@ public class JFrameConsultaProduto extends javax.swing.JFrame {
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     
     private String query = "SELECT p.codigo_produto as ID, p.nome_produto as Produto, p.quantidade_estoque as Quantidade_Em_Estoque,"
-            + " p.tarja as Tarja, p.receita as Receita, c.categoria as Categoria FROM produtos p join categoria_produto c";
+            + " p.tarja as Tarja, p.receita as Receita, c.categoria as Categoria FROM produtos p join categoria_produto c on p.codigo_categoria = c.codigo_categoria";
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
     
