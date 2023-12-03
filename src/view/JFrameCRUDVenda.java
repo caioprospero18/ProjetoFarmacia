@@ -1,4 +1,3 @@
-
 package view;
 
 import controller.LogTrack;
@@ -17,7 +16,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     
     private Venda venda;//objeto da tabela
     private Produto produto;
-    private Usuario usuario;
+    private Usuario funcionario;
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     private ResultSetTableModel result;
     DateTimeFormatter dtf;
@@ -30,7 +29,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                            "inner join produtos p on p.codigo_produto = vp.codigo_produto \n" +
                            "order by 2";
 
-    public JFrameCRUDVenda(Venda venda, boolean disconnectOnClose) throws SQLException {
+    public JFrameCRUDVenda(Venda venda, boolean disconnectOnClose) throws SQLException, Exception {
         initComponents();
         dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         now = LocalDateTime.now();
@@ -40,6 +39,19 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         
         if( venda == null){
             this.venda = new Venda();
+            
+            // Tentando recuperar o funcionário para criar um registro de Venda
+            //Valores usados somente de teste
+            System.out.println("Carregando o funcionario");
+            this.funcionario.setCodigoUsuario(1);
+            this.funcionario.load();
+            
+            System.out.println("Inserindo as info da venda");
+            this.venda.setCodigoVenda(10);
+            this.venda.setDataHoraVenda(String.valueOf(dtf.format(now)));
+            this.venda.setFuncionario(this.funcionario);
+            this.venda.save();
+            dataUp();
         } else{
             this.venda = venda;
             dataUp();//levar os dados para janela
@@ -73,7 +85,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         venda.setDataHoraVenda(jTextFieldDataHora.getText());
         //venda.setQuantidade(Integer.parseInt(jSpinnerQuant.getValue().toString()));
         //venda.setValorVenda(Float.parseFloat(jTextFieldValor.getText()) );
-        venda.setUsuario(usuario);
+        venda.setFuncionario(funcionario);
         //venda.setProduto(produto);
         
     }
@@ -339,30 +351,30 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private void jButtonSelecionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarUsuarioActionPerformed
         try{
 
-            if (usuario == null){
-                usuario = new Usuario();
+            if (funcionario == null){
+                funcionario = new Usuario();
             }
 
             JFrameConsultaUsuario jFrameConsultaUsuario;
-            jFrameConsultaUsuario = new JFrameConsultaUsuario(usuario, true, false);
-            jFrameConsultaUsuario.addWindowListener( new java.awt.event.WindowAdapter() {
+            jFrameConsultaUsuario = new JFrameConsultaUsuario(funcionario, true, false);
+            jFrameConsultaUsuario.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 //metodo para atualizar a tabela ao fechar a Janela CRUD
                 public void windowClosed( java.awt.event.WindowEvent evt){
-                    if( usuario.getNomeCompleto()!= null){
-                        jTextFieldUsuario.setText(usuario.getNomeCompleto());
+                    if( funcionario.getNomeCompleto()!= null){
+                        jTextFieldUsuario.setText(funcionario.getNomeCompleto());
                     }
                 }
             });
             jFrameConsultaUsuario.setVisible(true);
         } catch( Exception ex){
             LogTrack.getInstance().addException(ex, true, this);
-            usuario = null;
+            funcionario = null;
         }
     }//GEN-LAST:event_jButtonSelecionarUsuarioActionPerformed
 
     private void jButtonApagarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarUsuarioActionPerformed
-        usuario = null;
+        funcionario = null;
         jTextFieldUsuario.setText(null);
     }//GEN-LAST:event_jButtonApagarUsuarioActionPerformed
 

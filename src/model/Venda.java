@@ -43,7 +43,7 @@ public class Venda extends DataAccessObject{
         }
     }
 
-    public void setUsuario(Usuario cliente) throws Exception {
+    public void setCliente(Usuario cliente) throws Exception {
         if( this.cliente == null ){
            
            if( cliente != null ){

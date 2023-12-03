@@ -1,5 +1,8 @@
 <log>
-                                                                                                                                        
+                                                                                                                                                    
+    
+    
+    
     
     
     
@@ -84,7 +87,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                                        
+                                                                                                                                                    
+    
+    
+    
     
     
     
@@ -169,7 +175,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                                        
+                                                                                                                                                    
+    
+    
+    
     
     
     
@@ -254,7 +263,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                                    
+                                                                                                                                                
+    
+    
+    
     
     
     
@@ -330,7 +342,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                                
+                                                                                                                                            
+    
+    
+    
     
     
     
@@ -408,7 +423,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                            
+                                                                                                                                        
+    
+    
+    
     
     
     
@@ -485,7 +503,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                            
+                                                                                                                                        
+    
+    
+    
     
     
     
@@ -558,7 +579,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                            
+                                                                                                                                        
+    
+    
+    
     
     
     
@@ -634,7 +658,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                        
+                                                                                                                                    
+    
+    
+    
     
     
     
@@ -712,7 +739,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                    
+                                                                                                                                
+    
+    
+    
     
     
     
@@ -781,7 +811,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                                
+                                                                                                                            
+    
+    
+    
     
     
     
@@ -848,7 +881,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                            
+                                                                                                                        
+    
+    
+    
     
     
     
@@ -914,7 +950,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                        
+                                                                                                                    
+    
+    
+    
     
     
     
@@ -993,7 +1032,10 @@
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                    
+                                                                                                                
+    
+    
+    
     
     
     
@@ -1065,7 +1107,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                
+                                                                                                            
+    
+    
+    
     
     
     
@@ -1135,7 +1180,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                                
+                                                                                                            
+    
+    
+    
     
     
     
@@ -1204,7 +1252,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                            
+                                                                                                        
+    
+    
+    
     
     
     
@@ -1273,7 +1324,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                        
+                                                                                                    
+    
+    
+    
     
     
     
@@ -1341,7 +1395,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                        
+                                                                                                    
+    
+    
+    
     
     
     
@@ -1408,7 +1465,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                    
+                                                                                                
+    
+    
+    
     
     
     
@@ -1468,7 +1528,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                                
+                                                                                            
+    
+    
+    
     
     
     
@@ -1534,7 +1597,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                            
+                                                                                        
+    
+    
+    
     
     
     
@@ -1599,7 +1665,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                        
+                                                                                    
+    
+    
+    
     
     
     
@@ -1663,7 +1732,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                    
+                                                                                
+    
+    
+    
     
     
     
@@ -1726,7 +1798,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                
+                                                                            
+    
+    
+    
     
     
     
@@ -1782,7 +1857,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                                
+                                                                            
+    
+    
+    
     
     
     
@@ -1837,7 +1915,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                            
+                                                                        
+    
+    
+    
     
     
     
@@ -1891,7 +1972,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                        
+                                                                    
+    
+    
+    
     
     
     
@@ -1945,7 +2029,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                        
+                                                                    
+    
+    
+    
     
     
     
@@ -1998,7 +2085,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                    
+                                                                
+    
+    
+    
     
     
     
@@ -2052,7 +2142,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                                
+                                                            
+    
+    
+    
     
     
     
@@ -2105,7 +2198,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                            
+                                                        
+    
+    
+    
     
     
     
@@ -2157,7 +2253,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                        
+                                                    
+    
+    
+    
     
     
     
@@ -2208,7 +2307,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                    
+                                                
+    
+    
+    
     
     
     
@@ -2258,7 +2360,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                                
+                                            
+    
+    
+    
     
     
     
@@ -2307,7 +2412,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                            
+                                        
+    
+    
+    
     
     
     
@@ -2355,7 +2463,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                        
+                                    
+    
+    
+    
     
     
     
@@ -2402,7 +2513,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                    
+                                
+    
+    
+    
     
     
     
@@ -2448,7 +2562,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-                
+                            
+    
+    
+    
     
     
     
@@ -2493,7 +2610,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-            
+                        
+    
+    
+    
     
     
     <exception time="Fri Dec 01 10:09:20 BRT 2023">java.lang.NullPointerException: Cannot invoke "model.TipoUsuario.getNome()" because the return value of "model.Usuario.getTipoUsuario()" is null&#13;
@@ -2537,7 +2657,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-            
+                        
+    
+    
+    
     
     <exception time="Fri Dec 01 10:09:37 BRT 2023">java.lang.NullPointerException: Cannot invoke "model.TipoUsuario.getNome()" because the return value of "model.Usuario.getTipoUsuario()" is null&#13;
 	at view.JFrameCRUDUsuario.dataUp(JFrameCRUDUsuario.java:121)&#13;
@@ -2580,7 +2703,10 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
-        
+                    
+    
+    
+    
     
     <exception time="Fri Dec 01 10:10:19 BRT 2023">java.lang.NullPointerException: Cannot invoke "model.TipoUsuario.getNome()" because the return value of "model.Usuario.getTipoUsuario()" is null&#13;
 	at view.JFrameCRUDUsuario.dataUp(JFrameCRUDUsuario.java:121)&#13;
@@ -2623,6 +2749,9 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
 	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
 </exception>
+                
+    
+    
     
     <exception time="Fri Dec 01 10:17:38 BRT 2023">java.lang.NullPointerException: Cannot invoke "java.time.format.DateTimeFormatter.format(java.time.temporal.TemporalAccessor)" because "this.dtf" is null&#13;
 	at view.JFrameCRUDVenda.&lt;init&gt;(JFrameCRUDVenda.java:25)&#13;
@@ -2646,6 +2775,132 @@ inner join produtos p on p.codigo_produto = ' at line 1&#13;
 	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)&#13;
 	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)&#13;
 	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4827)&#13;
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)&#13;
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)&#13;
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)&#13;
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)&#13;
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)&#13;
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)&#13;
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)&#13;
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)&#13;
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)&#13;
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)&#13;
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
+</exception>
+            
+    
+    
+    <exception time="Sat Dec 02 21:47:46 BRT 2023">java.lang.Exception: Informe o ID.&#13;
+	at view.JFrameCRUDVenda.checkInput(JFrameCRUDVenda.java:63)&#13;
+	at view.JFrameCRUDVenda.jButtonAdicionarActionPerformed(JFrameCRUDVenda.java:408)&#13;
+	at view.JFrameCRUDVenda$8.actionPerformed(JFrameCRUDVenda.java:212)&#13;
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)&#13;
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)&#13;
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)&#13;
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)&#13;
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:279)&#13;
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6621)&#13;
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)&#13;
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)&#13;
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)&#13;
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)&#13;
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)&#13;
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)&#13;
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)&#13;
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4575)&#13;
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)&#13;
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)&#13;
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)&#13;
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)&#13;
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)&#13;
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)&#13;
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)&#13;
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)&#13;
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)&#13;
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)&#13;
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)&#13;
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)&#13;
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)&#13;
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)&#13;
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
+</exception>
+        
+    
+    <exception time="Sat Dec 02 22:05:29 BRT 2023">java.lang.NullPointerException: Cannot invoke "model.Usuario.setCodigoUsuario(int)" because "this.funcionario" is null&#13;
+	at view.JFrameCRUDVenda.&lt;init&gt;(JFrameCRUDVenda.java:43)&#13;
+	at view.JFrameConsultaVenda.jButtonAdicionarActionPerformed(JFrameConsultaVenda.java:211)&#13;
+	at view.JFrameConsultaVenda$5.actionPerformed(JFrameConsultaVenda.java:102)&#13;
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)&#13;
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)&#13;
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)&#13;
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)&#13;
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:279)&#13;
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6621)&#13;
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)&#13;
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)&#13;
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)&#13;
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)&#13;
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)&#13;
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)&#13;
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)&#13;
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4575)&#13;
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)&#13;
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)&#13;
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)&#13;
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)&#13;
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)&#13;
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)&#13;
+	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)&#13;
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)&#13;
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)&#13;
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:98)&#13;
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:747)&#13;
+	at java.desktop/java.awt.EventQueue$5.run(EventQueue.java:745)&#13;
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:400)&#13;
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(ProtectionDomain.java:87)&#13;
+	at java.desktop/java.awt.EventQueue.dispatchEvent(EventQueue.java:744)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(EventDispatchThread.java:203)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(EventDispatchThread.java:124)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(EventDispatchThread.java:113)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:109)&#13;
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(EventDispatchThread.java:101)&#13;
+	at java.desktop/java.awt.EventDispatchThread.run(EventDispatchThread.java:90)&#13;
+</exception>
+    
+    <exception time="Sat Dec 02 22:07:24 BRT 2023">java.lang.NullPointerException: Cannot invoke "model.Usuario.setCodigoUsuario(int)" because "this.funcionario" is null&#13;
+	at view.JFrameCRUDVenda.&lt;init&gt;(JFrameCRUDVenda.java:44)&#13;
+	at view.JFrameConsultaVenda.jButtonAdicionarActionPerformed(JFrameConsultaVenda.java:211)&#13;
+	at view.JFrameConsultaVenda$5.actionPerformed(JFrameConsultaVenda.java:102)&#13;
+	at java.desktop/javax.swing.AbstractButton.fireActionPerformed(AbstractButton.java:1972)&#13;
+	at java.desktop/javax.swing.AbstractButton$Handler.actionPerformed(AbstractButton.java:2314)&#13;
+	at java.desktop/javax.swing.DefaultButtonModel.fireActionPerformed(DefaultButtonModel.java:407)&#13;
+	at java.desktop/javax.swing.DefaultButtonModel.setPressed(DefaultButtonModel.java:262)&#13;
+	at java.desktop/javax.swing.plaf.basic.BasicButtonListener.mouseReleased(BasicButtonListener.java:279)&#13;
+	at java.desktop/java.awt.Component.processMouseEvent(Component.java:6621)&#13;
+	at java.desktop/javax.swing.JComponent.processMouseEvent(JComponent.java:3398)&#13;
+	at java.desktop/java.awt.Component.processEvent(Component.java:6386)&#13;
+	at java.desktop/java.awt.Container.processEvent(Container.java:2266)&#13;
+	at java.desktop/java.awt.Component.dispatchEventImpl(Component.java:4996)&#13;
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2324)&#13;
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)&#13;
+	at java.desktop/java.awt.LightweightDispatcher.retargetMouseEvent(Container.java:4948)&#13;
+	at java.desktop/java.awt.LightweightDispatcher.processMouseEvent(Container.java:4575)&#13;
+	at java.desktop/java.awt.LightweightDispatcher.dispatchEvent(Container.java:4516)&#13;
+	at java.desktop/java.awt.Container.dispatchEventImpl(Container.java:2310)&#13;
+	at java.desktop/java.awt.Window.dispatchEventImpl(Window.java:2780)&#13;
+	at java.desktop/java.awt.Component.dispatchEvent(Component.java:4828)&#13;
 	at java.desktop/java.awt.EventQueue.dispatchEventImpl(EventQueue.java:775)&#13;
 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:720)&#13;
 	at java.desktop/java.awt.EventQueue$4.run(EventQueue.java:714)&#13;
