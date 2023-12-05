@@ -29,33 +29,31 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                            "inner join produtos p on p.codigo_produto = vp.codigo_produto \n" +
                            "order by 2";
 
-    public JFrameCRUDVenda(Venda venda, boolean disconnectOnClose) throws SQLException, Exception {
+    public JFrameCRUDVenda(Usuario funcionario, Venda venda, boolean disconnectOnClose) throws SQLException, Exception {
         initComponents();
         dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         now = LocalDateTime.now();
         
         jTextFieldDataHora.setText(String.valueOf(dtf.format(now)));
+
         
+        if( funcionario == null){
+            System.out.println("funcionário nulo");
+            this.funcionario = new Usuario();
+        } else {
+            System.out.println("funcionario cheio");
+            this.funcionario = funcionario;
+            dataUp();
+            jTextFieldFuncionario.setText(funcionario.getNomeCompleto());
+        }
         
         if( venda == null){
             this.venda = new Venda();
-            
-            // Tentando recuperar o funcionário para criar um registro de Venda
-            //Valores usados somente de teste
-            System.out.println("Carregando o funcionario");
-            this.funcionario.setCodigoUsuario(1);
-            this.funcionario.load();
-            
-            System.out.println("Inserindo as info da venda");
-            this.venda.setCodigoVenda(10);
-            this.venda.setDataHoraVenda(String.valueOf(dtf.format(now)));
-            this.venda.setFuncionario(this.funcionario);
-            this.venda.save();
-            dataUp();
         } else{
             this.venda = venda;
             dataUp();//levar os dados para janela
         }
+        
         
         this.disconnectOnClose = disconnectOnClose;
         
@@ -97,7 +95,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         //jSpinnerQuant.setText(String.valueOf(venda.getQuantidade()));
         jTextFieldValor.setText(String.valueOf(venda.getValorVenda())); 
         if(venda.getUsuario().getNomeCompleto()!= null){
-            jTextFieldUsuario.setText(venda.getUsuario().getNomeCompleto());
+            jTextFieldCliente.setText(venda.getUsuario().getNomeCompleto());
         }
         /*if(venda.getProduto().getNomeProduto()!= null){
             jTextFieldProduto.setText(venda.getProduto().getNomeProduto());
@@ -117,8 +115,8 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         jTextFieldValor = new javax.swing.JTextField();
         jButtonExcluir = new javax.swing.JButton();
         jButtonSalvar = new javax.swing.JButton();
-        jLabelUsuario = new javax.swing.JLabel();
-        jTextFieldUsuario = new javax.swing.JTextField();
+        jLabelCliente = new javax.swing.JLabel();
+        jTextFieldCliente = new javax.swing.JTextField();
         jButtonSelecionarUsuario = new javax.swing.JButton();
         jButtonApagarUsuario = new javax.swing.JButton();
         jLabelProduto = new javax.swing.JLabel();
@@ -129,6 +127,8 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         jTableProdutos = new javax.swing.JTable();
         jSpinnerQuant = new javax.swing.JSpinner();
         jButtonAdicionar = new javax.swing.JButton();
+        jLabelFuncionario = new javax.swing.JLabel();
+        jTextFieldFuncionario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -161,9 +161,9 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
             }
         });
 
-        jLabelUsuario.setText("Nome cliente:");
+        jLabelCliente.setText("Nome cliente:");
 
-        jTextFieldUsuario.setEditable(false);
+        jTextFieldCliente.setEditable(false);
 
         jButtonSelecionarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/search-icon.png"))); // NOI18N
         jButtonSelecionarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -218,6 +218,10 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
             }
         });
 
+        jLabelFuncionario.setText("Nome funcionário:");
+
+        jTextFieldFuncionario.setEditable(false);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -227,42 +231,6 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelID)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelDataHora)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldDataHora))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelUsuario)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonSelecionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonApagarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabelProduto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextFieldProduto)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButtonSelecionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(42, 42, 42)
-                                        .addComponent(jLabelQuantidade)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jSpinnerQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonApagarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabelValor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -270,7 +238,48 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                         .addComponent(jButtonExcluir, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButtonSalvar)
-                        .addGap(6, 6, 6)))
+                        .addGap(6, 6, 6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabelID)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jLabelDataHora)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextFieldDataHora))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabelCliente)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButtonSelecionarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButtonApagarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabelProduto)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTextFieldProduto)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jButtonSelecionarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(42, 42, 42)
+                                            .addComponent(jLabelQuantidade)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jSpinnerQuant, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(jButtonAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButtonApagarProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelFuncionario)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextFieldFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -282,11 +291,15 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                     .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelDataHora)
                     .addComponent(jTextFieldDataHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelFuncionario)
+                    .addComponent(jTextFieldFuncionario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelUsuario)
-                        .addComponent(jTextFieldUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabelCliente)
+                        .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonSelecionarUsuario)
                     .addComponent(jButtonApagarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -309,7 +322,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                     .addComponent(jTextFieldValor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonExcluir)
                     .addComponent(jButtonSalvar))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -362,7 +375,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                 //metodo para atualizar a tabela ao fechar a Janela CRUD
                 public void windowClosed( java.awt.event.WindowEvent evt){
                     if( funcionario.getNomeCompleto()!= null){
-                        jTextFieldUsuario.setText(funcionario.getNomeCompleto());
+                        jTextFieldCliente.setText(funcionario.getNomeCompleto());
                     }
                 }
             });
@@ -375,7 +388,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
 
     private void jButtonApagarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarUsuarioActionPerformed
         funcionario = null;
-        jTextFieldUsuario.setText(null);
+        jTextFieldCliente.setText(null);
     }//GEN-LAST:event_jButtonApagarUsuarioActionPerformed
 
     private void jButtonSelecionarProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarProdutoActionPerformed
@@ -430,19 +443,21 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private javax.swing.JButton jButtonSalvar;
     private javax.swing.JButton jButtonSelecionarProduto;
     private javax.swing.JButton jButtonSelecionarUsuario;
+    private javax.swing.JLabel jLabelCliente;
     private javax.swing.JLabel jLabelDataHora;
+    private javax.swing.JLabel jLabelFuncionario;
     private javax.swing.JLabel jLabelID;
     private javax.swing.JLabel jLabelProduto;
     private javax.swing.JLabel jLabelQuantidade;
-    private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JLabel jLabelValor;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner jSpinnerQuant;
     private javax.swing.JTable jTableProdutos;
+    private javax.swing.JTextField jTextFieldCliente;
     private javax.swing.JTextField jTextFieldDataHora;
+    private javax.swing.JTextField jTextFieldFuncionario;
     private javax.swing.JTextField jTextFieldID;
     private javax.swing.JTextField jTextFieldProduto;
-    private javax.swing.JTextField jTextFieldUsuario;
     private javax.swing.JTextField jTextFieldValor;
     // End of variables declaration//GEN-END:variables
 }

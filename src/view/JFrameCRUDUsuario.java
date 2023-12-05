@@ -32,6 +32,10 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
             jTextFieldID.setEnabled(false);
         }
         
+        if (usuario.getTipoUsuario().getNome().equals("Cliente")){
+            jTextFieldEmail.setEditable(false);
+        }
+        
         
         
         this.disconnectOnClose = disconnectOnClose;

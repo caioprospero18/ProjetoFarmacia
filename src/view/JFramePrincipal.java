@@ -12,10 +12,39 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private Usuario usuario;
     
     
-    public JFramePrincipal(Usuario usuario) {
+    public JFramePrincipal(Usuario usuario) throws Exception {
         initComponents();
+        usuario.load();
         
         jMenuUsuario.setText("Bem Vindo "+usuario.getNomeCompleto());
+        
+        if (usuario.getTipoUsuario().getModuloAdministrativo().equals("N")){
+            jMenuItemCadastroUsuarios.setEnabled(false);
+            jMenuItemConsultaUsuarios.setEnabled(false);
+            jMenuItemCadastroTipoUsuario.setEnabled(false);
+            jMenuItemConsultaTipoUsuario.setEnabled(false);
+            jMenuItemCadastroCategoria.setEnabled(false);
+            jMenuItemConsultaCategoria.setEnabled(false);
+            jMenuItemCadastroProduto.setEnabled(false);
+            jMenuItemConsultaProduto.setEnabled(false);
+        }
+        
+        if (usuario.getTipoUsuario().getModuloVenda().equals("N")){
+            jButtonRealizarVenda.setEnabled(false);
+            jButtonConsultarVendas.setEnabled(false);
+        }
+        
+        if (usuario.getTipoUsuario().getModuloCadastrarReceita().equals("N")){
+            jMenuItemCadastroReceita.setEnabled(false);
+            jMenuItemConsultaReceita.setEnabled(false);
+        }
+        
+        if (!usuario.getTipoUsuario().getNome().equals("Administrador")
+                || !usuario.getTipoUsuario().getNome().equals("Gerente")){
+            jMenuItemCadastroCategoria.setEnabled(false);
+            jMenuItemCadastroTipoUsuario.setEnabled(false);
+        }
+        
     }
     
     private void logout(){
@@ -34,13 +63,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuBar = new javax.swing.JMenuBar();
         jMenuAdm = new javax.swing.JMenu();
         jMenuItemConsultaCategoria = new javax.swing.JMenuItem();
-        jMenuConsultaProduto = new javax.swing.JMenuItem();
+        jMenuItemConsultaProduto = new javax.swing.JMenuItem();
         jMenuItemConsultaReceita = new javax.swing.JMenuItem();
         jMenuItemConsultaTipoUsuario = new javax.swing.JMenuItem();
         jMenuItemConsultaUsuarios = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jMenuItemCadastroCategoria = new javax.swing.JMenuItem();
-        jMenuCadastroProduto = new javax.swing.JMenuItem();
+        jMenuItemCadastroProduto = new javax.swing.JMenuItem();
         jMenuItemCadastroReceita = new javax.swing.JMenuItem();
         jMenuItemCadastroTipoUsuario = new javax.swing.JMenuItem();
         jMenuItemCadastroUsuarios = new javax.swing.JMenuItem();
@@ -76,13 +105,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenuAdm.add(jMenuItemConsultaCategoria);
 
-        jMenuConsultaProduto.setText("Consulta Produto");
-        jMenuConsultaProduto.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemConsultaProduto.setText("Consulta Produto");
+        jMenuItemConsultaProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuConsultaProdutoActionPerformed(evt);
+                jMenuItemConsultaProdutoActionPerformed(evt);
             }
         });
-        jMenuAdm.add(jMenuConsultaProduto);
+        jMenuAdm.add(jMenuItemConsultaProduto);
 
         jMenuItemConsultaReceita.setText("Consulta Receita");
         jMenuItemConsultaReceita.addActionListener(new java.awt.event.ActionListener() {
@@ -117,13 +146,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
         });
         jMenuAdm.add(jMenuItemCadastroCategoria);
 
-        jMenuCadastroProduto.setText("Cadastro Produto");
-        jMenuCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemCadastroProduto.setText("Cadastro Produto");
+        jMenuItemCadastroProduto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuCadastroProdutoActionPerformed(evt);
+                jMenuItemCadastroProdutoActionPerformed(evt);
             }
         });
-        jMenuAdm.add(jMenuCadastroProduto);
+        jMenuAdm.add(jMenuItemCadastroProduto);
 
         jMenuItemCadastroReceita.setText("Cadastro Receita");
         jMenuItemCadastroReceita.addActionListener(new java.awt.event.ActionListener() {
@@ -169,9 +198,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(227, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButtonConsultarVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonRealizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButtonConsultarVendas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonRealizarVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(214, 214, 214))
         );
         layout.setVerticalGroup(
@@ -197,7 +226,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemConsultaCategoriaActionPerformed
 
-    private void jMenuConsultaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultaProdutoActionPerformed
+    private void jMenuItemConsultaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaProdutoActionPerformed
         try{
             JFrameConsultaProduto jFrameConsultaProduto;
             jFrameConsultaProduto = new JFrameConsultaProduto(null,false, true);
@@ -205,7 +234,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         } catch ( Exception ex){
             LogTrack.getInstance().addException(ex, true, this);
         }
-    }//GEN-LAST:event_jMenuConsultaProdutoActionPerformed
+    }//GEN-LAST:event_jMenuItemConsultaProdutoActionPerformed
 
     private void jMenuItemConsultaReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultaReceitaActionPerformed
         try{
@@ -247,7 +276,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItemCadastroCategoriaActionPerformed
 
-    private void jMenuCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastroProdutoActionPerformed
+    private void jMenuItemCadastroProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroProdutoActionPerformed
         try{
             JFrameCRUDProduto jFrameCRUDProduto;
             jFrameCRUDProduto = new JFrameCRUDProduto(null,true);
@@ -255,7 +284,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         } catch ( Exception ex){
             LogTrack.getInstance().addException(ex, true, this);
         }
-    }//GEN-LAST:event_jMenuCadastroProdutoActionPerformed
+    }//GEN-LAST:event_jMenuItemCadastroProdutoActionPerformed
 
     private void jMenuItemCadastroReceitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCadastroReceitaActionPerformed
         try{
@@ -294,7 +323,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private void jButtonRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRealizarVendaActionPerformed
         try{
             JFrameCRUDVenda jFrameCRUDVenda;
-            jFrameCRUDVenda = new JFrameCRUDVenda(null, true);
+            jFrameCRUDVenda = new JFrameCRUDVenda(this.usuario,null, true);
             jFrameCRUDVenda.setVisible(true);
         } catch (Exception ex){
             LogTrack.getInstance().addException(ex, true, this);
@@ -343,7 +372,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             private Usuario usuario;
             public void run() {
-                new JFramePrincipal(this.usuario).setVisible(true);
+                try{
+                    new JFramePrincipal(this.usuario).setVisible(true);
+                }catch (Exception ex){
+                    LogTrack.getInstance().addException(ex, true, null);
+                }
             }
         });
     }
@@ -353,13 +386,13 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButtonRealizarVenda;
     private javax.swing.JMenu jMenuAdm;
     private javax.swing.JMenuBar jMenuBar;
-    private javax.swing.JMenuItem jMenuCadastroProduto;
-    private javax.swing.JMenuItem jMenuConsultaProduto;
     private javax.swing.JMenuItem jMenuItemCadastroCategoria;
+    private javax.swing.JMenuItem jMenuItemCadastroProduto;
     private javax.swing.JMenuItem jMenuItemCadastroReceita;
     private javax.swing.JMenuItem jMenuItemCadastroTipoUsuario;
     private javax.swing.JMenuItem jMenuItemCadastroUsuarios;
     private javax.swing.JMenuItem jMenuItemConsultaCategoria;
+    private javax.swing.JMenuItem jMenuItemConsultaProduto;
     private javax.swing.JMenuItem jMenuItemConsultaReceita;
     private javax.swing.JMenuItem jMenuItemConsultaTipoUsuario;
     private javax.swing.JMenuItem jMenuItemConsultaUsuarios;

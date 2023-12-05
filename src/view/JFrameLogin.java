@@ -19,7 +19,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         usuario = new Usuario();
     }
 
-    private void login(){
+    private void login() throws Exception{
         
         
         JFramePrincipal jFramePrincipal;

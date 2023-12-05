@@ -8,15 +8,17 @@ import java.sql.SQLException;
 import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import model.Usuario;
 import model.Venda;
 
 public class JFrameConsultaVenda extends javax.swing.JFrame {
     
     private Venda venda;//objeto da tabela
+    private Usuario usuario;
     private boolean select;//define se é uma janela de seleção
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     
-    private String query = "select v.codigo_venda as ID, v.data_hora_venda as Data_Hora, c.nome_completo as Cliente, f.nome_completo as Funcionario, v.valor_venda\n" +
+    private String query = "select v.codigo_venda as ID, v.data_hora_venda as Data_Hora, c.nome_completo as Cliente, f.nome_completo as Funcionario, v.valor_venda as Valor_Venda\n" +
                             "from vendas v\n" +
                             "join usuarios c on c.codigo_usuario = v.codigo_cliente\n" +
                             "join usuarios f on f.codigo_usuario = v.codigo_funcionario\n" +
@@ -180,7 +182,7 @@ public class JFrameConsultaVenda extends javax.swing.JFrame {
                 venda.load();
                 
                 JFrameCRUDVenda crud;
-                crud = new JFrameCRUDVenda(venda/*já possui dados*/, false);
+                crud = new JFrameCRUDVenda(usuario,venda/*já possui dados*/, false);
                 
                 crud.addWindowListener( new java.awt.event.WindowAdapter() {
             @Override
@@ -208,7 +210,7 @@ public class JFrameConsultaVenda extends javax.swing.JFrame {
         //chamar a nova janela
         JFrameCRUDVenda crud = null;
         try{
-            crud = new JFrameCRUDVenda(null/*janela de adicionar não tem dados para passar*/, false);
+            crud = new JFrameCRUDVenda(usuario, null/*janela de adicionar não tem dados para passar*/, false);
         }catch (Exception ex){
             LogTrack.getInstance().addException(ex, true, this);
         }

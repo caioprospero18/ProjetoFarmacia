@@ -17,12 +17,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemConsultaCategoriaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuConsultaProduto">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemConsultaProduto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta Produto"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuConsultaProdutoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemConsultaProdutoActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemConsultaReceita">
@@ -59,12 +59,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCadastroCategoriaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuCadastroProduto">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCadastroProduto">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastro Produto"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuCadastroProdutoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemCadastroProdutoActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemCadastroReceita">
@@ -134,9 +134,9 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="227" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jButtonConsultarVendas" max="32767" attributes="0"/>
-                  <Component id="jButtonRealizarVenda" min="-2" pref="248" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="jButtonConsultarVendas" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jButtonRealizarVenda" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="214" max="-2" attributes="0"/>
           </Group>
