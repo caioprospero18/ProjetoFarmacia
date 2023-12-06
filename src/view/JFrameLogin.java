@@ -52,6 +52,11 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabelUsuario.setText("Usuário");
 
         jTextFieldUsuario.setText("@nacafarm.com");
+        jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldUsuarioActionPerformed(evt);
+            }
+        });
 
         jLabelSenha.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabelSenha.setText("Senha");
@@ -153,6 +158,10 @@ public class JFrameLogin extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowClosing
+
+    private void jTextFieldUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldUsuarioActionPerformed
 
     /**
      * @param args the command line arguments

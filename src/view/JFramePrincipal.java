@@ -45,6 +45,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
             jMenuItemCadastroTipoUsuario.setEnabled(false);
         }
         
+        this.usuario = usuario;
+        
+        
     }
     
     private void logout(){
@@ -323,7 +326,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
     private void jButtonRealizarVendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRealizarVendaActionPerformed
         try{
             JFrameCRUDVenda jFrameCRUDVenda;
-            jFrameCRUDVenda = new JFrameCRUDVenda(this.usuario,null, true);
+            jFrameCRUDVenda = new JFrameCRUDVenda(usuario,null, true);
             jFrameCRUDVenda.setVisible(true);
         } catch (Exception ex){
             LogTrack.getInstance().addException(ex, true, this);

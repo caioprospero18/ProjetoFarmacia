@@ -1,4 +1,4 @@
-package view;
+ package view;
 
 import controller.LogTrack;
 import controller.ResultSetTableModel;
@@ -25,7 +25,8 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     
     
     
-    private String query = "SELECT p.nome_produto as Produto, vp.quantidade as Quantidade, p.receita as Receita from venda_produto vp \n" +
+    private String query = "SELECT p.nome_produto as Produto, vp.quantidade as Quantidade, p.receita as Receita " +
+                           "from venda_produto vp \n" +
                            "inner join produtos p on p.codigo_produto = vp.codigo_produto \n" +
                            "order by 2";
 
@@ -43,17 +44,27 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         } else {
             System.out.println("funcionario cheio");
             this.funcionario = funcionario;
-            dataUp();
+            //dataUp();
             jTextFieldFuncionario.setText(funcionario.getNomeCompleto());
         }
         
         if( venda == null){
-            this.venda = new Venda();
+            venda = new Venda();
+            
+            System.out.println("Inserindo as info da venda");
+            venda.setCodigoVenda(12);          
+            venda.setDataHoraVenda(String.valueOf(dtf.format(now)));
+            venda.setFuncionario(funcionario);
+            
+            this.venda = venda;
+            this.venda.save();
+            
+          
+            //dataUp();
         } else{
             this.venda = venda;
             dataUp();//levar os dados para janela
         }
-        
         
         this.disconnectOnClose = disconnectOnClose;
         
