@@ -39,27 +39,17 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
 
         
         if( funcionario == null){
-            System.out.println("funcionário nulo");
             this.funcionario = new Usuario();
         } else {
-            System.out.println("funcionario cheio");
             this.funcionario = funcionario;
             //dataUp();
             jTextFieldFuncionario.setText(funcionario.getNomeCompleto());
         }
         
         if( venda == null){
-            venda = new Venda();
-            
-            System.out.println("Inserindo as info da venda");
-            venda.setCodigoVenda(12);          
-            venda.setDataHoraVenda(String.valueOf(dtf.format(now)));
-            venda.setFuncionario(funcionario);
-            
+            venda = new Venda();            
             this.venda = venda;
-            this.venda.save();
-            
-          
+            this.venda.save();         
             //dataUp();
         } else{
             this.venda = venda;

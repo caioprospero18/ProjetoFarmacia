@@ -1,33 +1,34 @@
-
 package controller;
-
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-//camada de persistência
-//padrão DAO (Data Access Object
+// camada de persistência
+// padrão DAO (Data Access Object)
 public abstract class DataAccessObject {
     
-    private DataBaseConnection dbConnection;//objeto para manipular o banco
+    private DataBaseConnection dbConnection;
     
     private String table;
-    private boolean novel; //vai dizer se é um atributo novo ou um já existente
-    private boolean changed; //ver se o atributo foi alterado
+    private boolean novel;
+    private boolean changed;
     
-    //padrão Unit of Work
+    // padrão Unit of Work
     private HashMap<String, Object> dirty;
-    
-    public DataAccessObject(String table){
+
+    public DataAccessObject(String table) {
+        
         dbConnection = DataBaseConnection.getInstance();
+        
         this.table = table;
         this.novel = true;
         this.changed = false;
         dirty = new HashMap<String, Object>();
-    }
+    } 
     
-    public void insert() throws SQLException{
+    public void insert() throws SQLException {
+        
         if( this.novel && this.changed ) {
             
             String sql;
@@ -67,6 +68,8 @@ public abstract class DataAccessObject {
             sql += " (" + fields + ")";
             sql += " VALUES";
             sql += " (" + values + ")";
+            
+            System.out.println(sql);
 
             dbConnection.executeSQL(sql);
             this.novel = false;
@@ -75,7 +78,8 @@ public abstract class DataAccessObject {
         }
     }
     
-    public void update() throws SQLException{
+    public void update() throws SQLException {
+        
         if( !this.novel && this.changed ) {
             String sql;
             
@@ -111,78 +115,79 @@ public abstract class DataAccessObject {
             sql += set;
             sql += " WHERE";
             sql += getWhereClauseForOneEntry();
+            
+            System.out.println(sql);
+            
             dbConnection.executeSQL(sql);
             this.changed = false;
             dirty.clear();
         }
     }
     
-    public void delete() throws SQLException{
+    public void delete() throws SQLException {
         String sql;
         
-        sql = "DELETE FROM "+ this.table;
+        sql = "DELETE FROM " + this.table;
         sql += " WHERE";
         sql += getWhereClauseForOneEntry();
+        
+        System.out.println(sql);
+        
         dbConnection.executeSQL(sql);
     }
     
-    
-    
-    protected void addChange(String key, Object value){
+    protected void addChange(String key, Object value) {
         dirty.put(key, value);
         this.changed = true;
     }
     
-    //carregar dados do banco
-    public void load() throws SQLException, Exception{
+    public void load() throws SQLException, Exception {
         String sql;
-        sql = "SELECT * FROM " + this.table + " WHERE ";
+        sql = "SELECT * FROM " + this.table + " WHERE";
         sql += getWhereClauseForOneEntry();
         
-        dbConnection.executeQuery(sql);
-        
-        
+        dbConnection.executeQuery(sql);       
         boolean status = dbConnection.getResultSet().next();
-        if( status ){
-            ArrayList<Object> data;//ojeto para guardar os dados
+        
+        if( status ) {
+            ArrayList<Object> data;
             data = new ArrayList<Object>();
             
-            for(int i = 1; i <= dbConnection.getMetaData().getColumnCount(); i++){
-                data.add(dbConnection.getResultSet().getObject(i));
+            for ( int i = 1; i <= dbConnection.getMetaData().getColumnCount(); i++ ) {
+                data.add( dbConnection.getResultSet().getObject(i) );
             }
-            
+        
             fill(data);
             
             this.novel = false;
             this.changed = false;
             dirty.clear();
-        }
-        
-        
-        
-        
+        }       
         
     }
     
-    
-    
-    public void save() throws SQLException{
-        if( this.novel && this.changed ){
+    public void save() throws SQLException {
+        if( this.novel && this.changed ) {
             insert();
         }
         
-        if( !this.novel && this.changed ){
-            update();
+        if( !this.novel && this.changed ) {
+            update();            
         }
     }
     
-    public void disconnectFromDatabase() throws SQLException{
+    public void disconnectFromDatabase() throws SQLException {
         dbConnection.disconnect();
     }
     
-    //definir cláusula where
-    protected abstract String getWhereClauseForOneEntry(); 
+    protected abstract String getWhereClauseForOneEntry();
     
-    //método para preencher os atributos da classe que representa a tabela
     protected abstract void fill(ArrayList<Object> data) throws Exception;
+    
 }
+
+
+
+
+
+

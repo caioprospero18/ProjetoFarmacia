@@ -40,7 +40,7 @@ public class JFramePrincipal extends javax.swing.JFrame {
         }
         
         if (!usuario.getTipoUsuario().getNome().equals("Administrador")
-                || !usuario.getTipoUsuario().getNome().equals("Gerente")){
+                && !usuario.getTipoUsuario().getNome().equals("Gerente")){
             jMenuItemCadastroCategoria.setEnabled(false);
             jMenuItemCadastroTipoUsuario.setEnabled(false);
         }

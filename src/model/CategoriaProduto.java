@@ -8,7 +8,7 @@ public class CategoriaProduto extends DataAccessObject{
     
     private int codigoCategoria;
     private String categoria;
-    private float desconto;
+
     
     public CategoriaProduto(){
         super("categoria_produto");
@@ -28,12 +28,6 @@ public class CategoriaProduto extends DataAccessObject{
         }
     }
 
-    public void setDesconto(float desconto) {
-        if( desconto != this.desconto){
-            this.desconto = desconto;
-            addChange("desconto", this.categoria);
-        }
-    }
         
     public int getCodigoCategoria() {
         return codigoCategoria;
@@ -41,13 +35,7 @@ public class CategoriaProduto extends DataAccessObject{
 
     public String getCategoria() {
         return categoria;
-    }
-
-    public float getDesconto() {
-        return desconto;
-    }
-    
-    
+    }  
     
     public String getWhereClauseForOneEntry(){
         return " codigo_categoria = " + this.codigoCategoria;
@@ -56,8 +44,6 @@ public class CategoriaProduto extends DataAccessObject{
     public void fill(ArrayList<Object> data){
         codigoCategoria = (int)data.get(0);
         categoria = (String)data.get(1);
-        desconto = (float)data.get(2);
-
     }
     
     @Override
