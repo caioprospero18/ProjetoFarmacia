@@ -29,8 +29,8 @@ public class Venda extends DataAccessObject{
     }
 
     public void setDataHoraVenda(String data) {
-        if( dataHoraVenda != this.dataHoraVenda){
-            this.dataHoraVenda = dtf.format(now);
+        if( data != this.dataHoraVenda){
+            this.dataHoraVenda = data;
             addChange("data_hora_venda", this.dataHoraVenda);
         }
     }
@@ -50,7 +50,7 @@ public class Venda extends DataAccessObject{
                this.cliente = new Usuario();
                this.cliente.setCodigoUsuario(cliente.getCodigoUsuario());
                this.cliente.load();
-               addChange("codigo_usuario", this.cliente.getCodigoUsuario());
+               addChange("codigo_cliente", this.cliente.getCodigoUsuario());
            }
        }else{
            if( cliente == null){

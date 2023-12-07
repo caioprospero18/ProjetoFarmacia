@@ -122,9 +122,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `sistema_gerenciamento_farmacia`.`vendas` (
   `codigo_venda` INT NOT NULL,
-  `data_hora_venda` DATETIME NULL,
-  `valor_venda` FLOAT NULL,
-  `codigo_cliente` INT NOT NULL,
+  `data_hora_venda` DATETIME,
+  `valor_venda` FLOAT ,
+  `codigo_cliente` INT,
   `codigo_funcionario` INT NOT NULL,
   PRIMARY KEY (`codigo_venda`),
   INDEX `fk_vendas_usuarios1_idx` (`codigo_cliente` ASC) VISIBLE,

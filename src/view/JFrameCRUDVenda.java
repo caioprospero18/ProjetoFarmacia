@@ -7,21 +7,28 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 import static java.time.LocalDateTime.now;
 import java.time.format.DateTimeFormatter;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Produto;
 import model.TipoUsuario;
 import model.Usuario;
 import model.Venda;
+import model.VendaProduto;
 
 public class JFrameCRUDVenda extends javax.swing.JFrame {
     
     private Venda venda;//objeto da tabela
     private Produto produto;
     private Usuario funcionario;
+    private Usuario cliente;
+    private VendaProduto vendaProduto;
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
     private ResultSetTableModel result;
     DateTimeFormatter dtf;
     LocalDateTime now;
-
+    Random aleatorio = new Random();
+    
     
     
     
@@ -34,8 +41,6 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         initComponents();
         dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         now = LocalDateTime.now();
-        
-        jTextFieldDataHora.setText(String.valueOf(dtf.format(now)));
 
         
         if( funcionario == null){
@@ -47,9 +52,12 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         }
         
         if( venda == null){
-            venda = new Venda();            
-            this.venda = venda;
-            this.venda.save();         
+            jTextFieldDataHora.setText(String.valueOf(dtf.format(now)));
+            jTextFieldID.setText(String.valueOf(aleatorio.nextInt(100)));
+            
+            this.venda = new Venda();
+            dataDown();
+            this.venda.insert();
             //dataUp();
         } else{
             this.venda = venda;
@@ -81,11 +89,8 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private void dataDown() throws Exception{
         //data.setter TRAZER OS DADOS DA JANELA PARA O OBJETO
         venda.setCodigoVenda(Integer.parseInt(jTextFieldID.getText() ) );
-        venda.setDataHoraVenda(jTextFieldDataHora.getText());
-        //venda.setQuantidade(Integer.parseInt(jSpinnerQuant.getValue().toString()));
-        //venda.setValorVenda(Float.parseFloat(jTextFieldValor.getText()) );
+        venda.setDataHoraVenda((String)jTextFieldDataHora.getText());
         venda.setFuncionario(funcionario);
-        //venda.setProduto(produto);
         
     }
     
@@ -365,30 +370,37 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private void jButtonSelecionarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarUsuarioActionPerformed
         try{
 
-            if (funcionario == null){
-                funcionario = new Usuario();
+            if (cliente == null){
+                cliente = new Usuario();
             }
 
             JFrameConsultaUsuario jFrameConsultaUsuario;
-            jFrameConsultaUsuario = new JFrameConsultaUsuario(funcionario, true, false);
+            jFrameConsultaUsuario = new JFrameConsultaUsuario(cliente, true, false);
             jFrameConsultaUsuario.addWindowListener(new java.awt.event.WindowAdapter() {
+                
                 @Override
                 //metodo para atualizar a tabela ao fechar a Janela CRUD
                 public void windowClosed( java.awt.event.WindowEvent evt){
-                    if( funcionario.getNomeCompleto()!= null){
-                        jTextFieldCliente.setText(funcionario.getNomeCompleto());
+                    if( cliente.getNomeCompleto()!= null){
+                        jTextFieldCliente.setText(cliente.getNomeCompleto());
+                        try {
+                            venda.setCliente(cliente);
+                            venda.save();
+                        } catch (Exception ex) {
+                            Logger.getLogger(JFrameCRUDVenda.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
                 }
             });
             jFrameConsultaUsuario.setVisible(true);
         } catch( Exception ex){
             LogTrack.getInstance().addException(ex, true, this);
-            funcionario = null;
+            cliente = null;
         }
     }//GEN-LAST:event_jButtonSelecionarUsuarioActionPerformed
 
     private void jButtonApagarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarUsuarioActionPerformed
-        funcionario = null;
+        cliente = null;
         jTextFieldCliente.setText(null);
     }//GEN-LAST:event_jButtonApagarUsuarioActionPerformed
 
@@ -424,11 +436,18 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
         try{
-            checkInput();
-            dataDown();
-            produto.save();
+            if (vendaProduto == null){
+                vendaProduto = new VendaProduto();
+                vendaProduto.setCodigo(aleatorio.nextInt(10));
+                vendaProduto.setVenda(venda);
+                vendaProduto.setProduto(produto);
+                vendaProduto.setQuantidade((int)jSpinnerQuant.getValue());
+            }
+            vendaProduto.save();
+            
+            
             //evento para fechar a janela ao clicar "Salvar"
-            this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
+            //this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
             LogTrack.getInstance().addException(ex, true, this);
         }

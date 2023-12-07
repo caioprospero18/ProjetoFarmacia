@@ -151,12 +151,13 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
         if( row != -1){
             System.out.println("Selecionar");
             
-            int codigo = (int) result.getValueAt(row, 0);
+            String codigo = (String) result.getValueAt(row, 2);
             
-            this.usuario.setCodigoUsuario(codigo);
+            usuario.setEmail(codigo);
+            
             
             try{
-                this.usuario.load();
+                usuario.load();
                 this.dispatchEvent(new WindowEvent( this, WindowEvent.WINDOW_CLOSING ) );
             } catch ( Exception ex){
                 LogTrack.getInstance().addException(ex, true, this);

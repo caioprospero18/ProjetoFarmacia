@@ -15,7 +15,7 @@ public class VendaProduto extends DataAccessObject {
     private Produto produto;
     private Receita receita;
 
-    public VendaProduto(String table) {
+    public VendaProduto() {
         super("venda_produto");
     }
     
@@ -24,7 +24,10 @@ public class VendaProduto extends DataAccessObject {
     }
 
     public void setCodigo(int codigo) {
-        this.codigo = codigo;
+        if( codigo != this.codigo){
+            this.codigo = codigo;
+            addChange("codigo", this.codigo);
+        }
     }
 
     public int getQuantidade() {
@@ -43,7 +46,10 @@ public class VendaProduto extends DataAccessObject {
     }
 
     public void setVenda(Venda venda) {
-        this.venda = venda;
+        if(this.venda == null){
+            
+        }
+    
     }
 
     public Produto getProduto() {
