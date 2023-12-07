@@ -2,6 +2,7 @@
 package view;
 
 import controller.LogTrack;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import model.CategoriaProduto;
 import model.Produto;
@@ -14,6 +15,8 @@ private Produto produto;//objeto da tabela
  
     public JFrameCRUDProduto(Produto produto, boolean disconnectOnClose) throws Exception {
         initComponents();
+        Color minhaCor = new Color(204, 255, 204);
+        getContentPane().setBackground(minhaCor);
         
         if( produto == null){
             this.produto = new Produto();

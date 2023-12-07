@@ -2,6 +2,7 @@
 package view;
 
 import controller.LogTrack;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import model.TipoUsuario;
 
@@ -12,6 +13,8 @@ public class JFrameCRUDTipo extends javax.swing.JFrame {
     
     public JFrameCRUDTipo(TipoUsuario tipo, boolean disconnectOnClose) {
         initComponents();
+        Color minhaCor = new Color(204, 255, 204);
+        getContentPane().setBackground(minhaCor);
         
         if( tipo == null){
             this.tipo = new TipoUsuario();

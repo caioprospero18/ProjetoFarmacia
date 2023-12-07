@@ -3,6 +3,7 @@ package view;
 
 import controller.LogTrack;
 import controller.ResultSetTableModel;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import javax.swing.RowFilter;
@@ -24,6 +25,8 @@ public class JFrameConsultaUsuario extends javax.swing.JFrame {
 
     public JFrameConsultaUsuario(Usuario usuario, boolean select, boolean disconnectOnClose) throws SQLException {
         initComponents();
+        Color minhaCor = new Color(204, 255, 204);
+        getContentPane().setBackground(minhaCor);
         
         this.usuario = usuario;
         this.select = select;

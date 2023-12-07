@@ -2,6 +2,7 @@
 package view;
 
 import controller.LogTrack;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import model.CategoriaProduto;
 
@@ -12,6 +13,8 @@ public class JFrameCRUDCategoria extends javax.swing.JFrame {
 
     public JFrameCRUDCategoria(CategoriaProduto categoria, boolean disconnectOnClose) {
         initComponents();
+        Color minhaCor = new Color(204, 255, 204);
+        getContentPane().setBackground(minhaCor);
         
         if( categoria == null){
             this.categoria = new CategoriaProduto();

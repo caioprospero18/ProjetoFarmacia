@@ -2,6 +2,7 @@
 package view;
 
 import controller.LogTrack;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import model.TipoUsuario;
 import model.Usuario;
@@ -14,6 +15,8 @@ public class JFrameCRUDUsuario extends javax.swing.JFrame {
     
     public JFrameCRUDUsuario(Usuario usuario, boolean disconnectOnClose) throws Exception {
         initComponents();
+        Color minhaCor = new Color(204, 255, 204);
+        getContentPane().setBackground(minhaCor);
         
         if( usuario == null){
             this.usuario = new Usuario();

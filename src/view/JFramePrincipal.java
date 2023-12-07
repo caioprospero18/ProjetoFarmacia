@@ -5,6 +5,7 @@
 package view;
 
 import controller.LogTrack;
+import java.awt.Color;
 import model.Usuario;
 
 public class JFramePrincipal extends javax.swing.JFrame {
@@ -14,6 +15,9 @@ public class JFramePrincipal extends javax.swing.JFrame {
     
     public JFramePrincipal(Usuario usuario) throws Exception {
         initComponents();
+        
+        Color minhaCor = new Color(204, 255, 204);
+        getContentPane().setBackground(minhaCor);
         usuario.load();
         
         jMenuUsuario.setText("Bem Vindo "+usuario.getNomeCompleto());
@@ -61,8 +65,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jButtonRealizarVenda = new javax.swing.JButton();
         jButtonConsultarVendas = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar = new javax.swing.JMenuBar();
         jMenuAdm = new javax.swing.JMenu();
         jMenuItemConsultaCategoria = new javax.swing.JMenuItem();
@@ -80,10 +86,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jMenuItemSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Tela Principal");
+        setTitle("NacaFarm");
 
         jButtonRealizarVenda.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonRealizarVenda.setText("Realizar venda");
+        jButtonRealizarVenda.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonRealizarVenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRealizarVendaActionPerformed(evt);
@@ -92,11 +99,14 @@ public class JFramePrincipal extends javax.swing.JFrame {
 
         jButtonConsultarVendas.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButtonConsultarVendas.setText("Consultar vendas realizadas");
+        jButtonConsultarVendas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonConsultarVendas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConsultarVendasActionPerformed(evt);
             }
         });
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/logo.png"))); // NOI18N
 
         jMenuAdm.setText("Administrativo");
 
@@ -199,21 +209,26 @@ public class JFramePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(jButtonConsultarVendas)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonRealizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(227, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jButtonConsultarVendas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButtonRealizarVenda, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(214, 214, 214))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(196, 196, 196))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
-                .addComponent(jButtonRealizarVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jButtonConsultarVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(100, 100, 100))
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonConsultarVendas)
+                    .addComponent(jButtonRealizarVenda))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -385,8 +400,10 @@ public class JFramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonConsultarVendas;
     private javax.swing.JButton jButtonRealizarVenda;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenuAdm;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JMenuItem jMenuItemCadastroCategoria;

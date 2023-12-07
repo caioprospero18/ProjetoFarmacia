@@ -2,6 +2,7 @@
 
 import controller.LogTrack;
 import controller.ResultSetTableModel;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -28,6 +29,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private ResultSetTableModel result;
     DateTimeFormatter dtf;
     LocalDateTime now;
+    private static int id = 1;
     Random aleatorio = new Random();
         
     private String query = "SELECT p.nome_produto as Produto, vp.quantidade as Quantidade, p.receita as Receita " +
@@ -39,6 +41,8 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     public JFrameCRUDVenda(Usuario funcionario, Venda venda, boolean disconnectOnClose) throws SQLException, Exception {
         initComponents();
         configElements();
+        Color minhaCor = new Color(204, 255, 204);
+        getContentPane().setBackground(minhaCor);
         
         dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         now = LocalDateTime.now();
@@ -55,6 +59,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         if( venda == null){
             jTextFieldDataHora.setText(String.valueOf(dtf.format(now)));
             jTextFieldID.setText(String.valueOf(aleatorio.nextInt(100)));
+
             
             this.venda = new Venda();
             dataDown();
@@ -69,6 +74,10 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         
         result = new ResultSetTableModel(query);
         jTableProdutos.setModel(result);
+    }
+    
+    public static int proxId(){
+        return id++;
     }
     
     private void checkInput() throws Exception{
@@ -204,6 +213,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
             }
         });
 
+        jTableProdutos.setForeground(new java.awt.Color(255, 255, 255));
         jTableProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -219,6 +229,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
 
         jButtonAdicionar.setText("Adicionar Produto");
         jButtonAdicionar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonAdicionar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButtonAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAdicionarActionPerformed(evt);

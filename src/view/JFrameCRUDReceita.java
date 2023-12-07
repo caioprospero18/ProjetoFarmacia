@@ -2,6 +2,7 @@
 package view;
 
 import controller.LogTrack;
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import model.Produto;
 import model.Receita;
@@ -16,6 +17,8 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
 
     public JFrameCRUDReceita(Receita receita, boolean disconnectOnClose) {
         initComponents();
+        Color minhaCor = new Color(204, 255, 204);
+        getContentPane().setBackground(minhaCor);
         
         if( receita == null){
             this.receita = new Receita();

@@ -28,9 +28,11 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="243" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="116" max="32767" attributes="0"/>
               <Component id="jPanelLogin" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="211" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -38,7 +40,10 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-              <Component id="jPanelLogin" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="jPanelLogin" max="32767" attributes="0"/>
+                  <Component id="jLabel1" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace pref="123" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -47,6 +52,9 @@
   <SubComponents>
     <Container class="javax.swing.JPanel" name="jPanelLogin">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder/>
@@ -106,7 +114,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldUsuario">
           <Properties>
-            <Property name="text" type="java.lang.String" value="@nacafarm.com"/>
+            <Property name="text" type="java.lang.String" value="admin@nacafarm.com"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldUsuarioActionPerformed"/>
@@ -132,8 +140,18 @@
           </Events>
         </Component>
         <Component class="javax.swing.JPasswordField" name="jPasswordFieldSenha">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="1234"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/view/logo.png"/>
+        </Property>
+      </Properties>
+    </Component>
   </SubComponents>
 </Form>

@@ -5,6 +5,7 @@
 package view;
 
 import controller.LogTrack;
+import java.awt.Color;
 import model.Usuario;
 
 
@@ -15,17 +16,24 @@ public class JFrameLogin extends javax.swing.JFrame {
 
     public JFrameLogin() {
         initComponents();
-        
+        Color minhaCor = new Color(204, 255, 204);
+        getContentPane().setBackground(minhaCor);
         usuario = new Usuario();
     }
 
     private void login() throws Exception{
         
-        
-        JFramePrincipal jFramePrincipal;
-        jFramePrincipal = new JFramePrincipal(this.usuario);
-        jFramePrincipal.setVisible(true);
-        dispose();
+        if (usuario.getTipoUsuario().getNome().equals("Cliente")){
+            JFrameCliente jFrameCliente;
+            jFrameCliente = new JFrameCliente(this.usuario);
+            jFrameCliente.setVisible(true);
+            dispose();
+        } else{        
+                JFramePrincipal jFramePrincipal;
+                jFramePrincipal = new JFramePrincipal(this.usuario);
+                jFramePrincipal.setVisible(true);
+                dispose();
+        }
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -37,6 +45,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabelSenha = new javax.swing.JLabel();
         jButtonLogin = new javax.swing.JButton();
         jPasswordFieldSenha = new javax.swing.JPasswordField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("NacaFarm");
@@ -46,12 +55,13 @@ public class JFrameLogin extends javax.swing.JFrame {
             }
         });
 
+        jPanelLogin.setBackground(new java.awt.Color(255, 255, 255));
         jPanelLogin.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabelUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabelUsuario.setText("Usuário");
 
-        jTextFieldUsuario.setText("@nacafarm.com");
+        jTextFieldUsuario.setText("admin@nacafarm.com");
         jTextFieldUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldUsuarioActionPerformed(evt);
@@ -68,6 +78,8 @@ public class JFrameLogin extends javax.swing.JFrame {
                 jButtonLoginActionPerformed(evt);
             }
         });
+
+        jPasswordFieldSenha.setText("1234");
 
         javax.swing.GroupLayout jPanelLoginLayout = new javax.swing.GroupLayout(jPanelLogin);
         jPanelLogin.setLayout(jPanelLoginLayout);
@@ -103,20 +115,26 @@ public class JFrameLogin extends javax.swing.JFrame {
                 .addContainerGap(48, Short.MAX_VALUE))
         );
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/logo.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(243, 243, 243)
+                .addGap(42, 42, 42)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addComponent(jPanelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(90, 90, 90)
-                .addComponent(jPanelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(123, Short.MAX_VALUE))
         );
 
@@ -231,6 +249,7 @@ public class JFrameLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonLogin;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelSenha;
     private javax.swing.JLabel jLabelUsuario;
     private javax.swing.JPanel jPanelLogin;
