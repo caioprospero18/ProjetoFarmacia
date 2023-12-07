@@ -5,11 +5,13 @@ import controller.LogTrack;
 import java.awt.event.WindowEvent;
 import model.Produto;
 import model.Receita;
+import model.Usuario;
 
 public class JFrameCRUDReceita extends javax.swing.JFrame {
     
     private Receita receita;//objeto da tabela
     private Produto remedio;
+    private Usuario cliente;
     private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
 
     public JFrameCRUDReceita(Receita receita, boolean disconnectOnClose) {
@@ -42,6 +44,7 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
         receita.setNomeMedico(jTextFieldNomeMedico.getText());
         receita.setCrm(jTextFieldCrm.getText());
         receita.setCor(jTextFieldCor.getText()  );
+        receita.setCliente(cliente);
         receita.setProduto(remedio);       
     }
     
@@ -51,6 +54,9 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
         jTextFieldNomeMedico.setText(receita.getNomeMedico());
         jTextFieldCrm.setText(receita.getCrm());
         jTextFieldCor.setText(receita.getCor()  );
+        if(receita.getCliente().getNomeCompleto()!= null){
+            jTextFieldRemedio.setText(receita.getCliente().getNomeCompleto());
+        }
         if(receita.getProduto().getNomeProduto()!= null){
             jTextFieldRemedio.setText(receita.getProduto().getNomeProduto());
         }
@@ -77,8 +83,8 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
         jButtonApagarRemedio = new javax.swing.JButton();
         jLabelCliente = new javax.swing.JLabel();
         jTextFieldCliente = new javax.swing.JTextField();
-        jButtonSelecionarRemedio1 = new javax.swing.JButton();
-        jButtonApagarRemedio1 = new javax.swing.JButton();
+        jButtonSelecionarCliente = new javax.swing.JButton();
+        jButtonApagarCliente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -131,17 +137,17 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
 
         jTextFieldCliente.setEditable(false);
 
-        jButtonSelecionarRemedio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/search-icon.png"))); // NOI18N
-        jButtonSelecionarRemedio1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonSelecionarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/search-icon.png"))); // NOI18N
+        jButtonSelecionarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSelecionarRemedio1ActionPerformed(evt);
+                jButtonSelecionarClienteActionPerformed(evt);
             }
         });
 
-        jButtonApagarRemedio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/eraser-icon.png"))); // NOI18N
-        jButtonApagarRemedio1.addActionListener(new java.awt.event.ActionListener() {
+        jButtonApagarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/view/eraser-icon.png"))); // NOI18N
+        jButtonApagarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonApagarRemedio1ActionPerformed(evt);
+                jButtonApagarClienteActionPerformed(evt);
             }
         });
 
@@ -192,9 +198,9 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonApagarRemedio, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonSelecionarRemedio1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonSelecionarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButtonApagarRemedio1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jButtonApagarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -222,11 +228,11 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
                     .addComponent(jButtonApagarRemedio, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButtonApagarRemedio1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonApagarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabelCliente)
                         .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButtonSelecionarRemedio1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButtonSelecionarCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonExcluir)
@@ -300,23 +306,45 @@ public class JFrameCRUDReceita extends javax.swing.JFrame {
         jTextFieldRemedio.setText(null);
     }//GEN-LAST:event_jButtonApagarRemedioActionPerformed
 
-    private void jButtonSelecionarRemedio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarRemedio1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonSelecionarRemedio1ActionPerformed
+    private void jButtonSelecionarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSelecionarClienteActionPerformed
+        try{
 
-    private void jButtonApagarRemedio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarRemedio1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonApagarRemedio1ActionPerformed
+            if (cliente == null){
+                cliente = new Usuario();
+            }
+
+            JFrameConsultaUsuario jFrameConsultaUsuario;
+            jFrameConsultaUsuario = new JFrameConsultaUsuario(cliente, true, false);
+            jFrameConsultaUsuario.addWindowListener( new java.awt.event.WindowAdapter() {
+                @Override
+                //metodo para atualizar a tabela ao fechar a Janela CRUD
+                public void windowClosed( java.awt.event.WindowEvent evt){
+                    if( cliente.getNomeCompleto()!= null){
+                        jTextFieldCliente.setText(cliente.getNomeCompleto());
+                    }
+                }
+            });
+            jFrameConsultaUsuario.setVisible(true);
+        } catch( Exception ex){
+            LogTrack.getInstance().addException(ex, true, this);
+            cliente = null;
+        }
+    }//GEN-LAST:event_jButtonSelecionarClienteActionPerformed
+
+    private void jButtonApagarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonApagarClienteActionPerformed
+        cliente = null;
+        jTextFieldCliente.setText(null);
+    }//GEN-LAST:event_jButtonApagarClienteActionPerformed
 
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonApagarCliente;
     private javax.swing.JButton jButtonApagarRemedio;
-    private javax.swing.JButton jButtonApagarRemedio1;
     private javax.swing.JButton jButtonExcluir;
     private javax.swing.JButton jButtonSalvar;
+    private javax.swing.JButton jButtonSelecionarCliente;
     private javax.swing.JButton jButtonSelecionarRemedio;
-    private javax.swing.JButton jButtonSelecionarRemedio1;
     private javax.swing.JLabel jLabelCliente;
     private javax.swing.JLabel jLabelCor;
     private javax.swing.JLabel jLabelCrm;

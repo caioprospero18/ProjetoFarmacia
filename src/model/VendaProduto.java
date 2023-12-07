@@ -45,11 +45,27 @@ public class VendaProduto extends DataAccessObject {
         return venda;
     }
 
-    public void setVenda(Venda venda) {
-        if(this.venda == null){
-            
-        }
-    
+    public void setVenda(Venda venda) throws Exception {
+        if( this.venda == null ){
+           
+           if( venda != null ){
+               this.venda = venda;
+               addChange("codigo_venda", this.venda.getCodigoVenda());
+           }
+       }else{
+           if( venda == null){
+               
+               this.venda = null;
+               addChange("codigo_venda", null);
+           }else{
+               
+               if( !this.venda.equals( venda ) ){
+                   this.venda.setCodigoVenda(venda.getCodigoVenda());
+                   this.venda.load();
+                   addChange("codigo_venda", this.venda.getCodigoVenda());
+               }
+           }
+       }
     }
 
     public Produto getProduto() {

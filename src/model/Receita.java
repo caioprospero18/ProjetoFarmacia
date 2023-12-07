@@ -131,11 +131,20 @@ public class Receita extends DataAccessObject{
         crm = (String)data.get(2);
         cor = (String)data.get(3);
         if( data.get(4) != null ){
+            if( cliente == null){
+                cliente = new Usuario();
+            }
+            
+            cliente.setCodigoUsuario((int)data.get(4));
+            cliente.load();
+        }
+        
+        if( data.get(5) != null ){
             if( produto == null){
                 produto = new Produto();
             }
             
-            produto.setCodigoProduto((int)data.get(4));
+            produto.setCodigoProduto((int)data.get(5));
             produto.load();
         }
 

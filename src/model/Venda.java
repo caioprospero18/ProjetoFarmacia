@@ -122,7 +122,7 @@ public class Venda extends DataAccessObject{
     public void fill(ArrayList<Object> data) throws Exception{
         codigoVenda = (int)data.get(0);
         dataHoraVenda = data.get(1).toString();
-        valorVenda = (float)data.get(2);
+        valorVenda = (float) data.get(2);
         if( data.get(3) != null ){
             if( cliente == null){
                 cliente = new Usuario();

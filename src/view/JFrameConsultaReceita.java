@@ -1,4 +1,4 @@
-
+    
 package view;
 
 import controller.LogTrack;
@@ -18,7 +18,7 @@ public class JFrameConsultaReceita extends javax.swing.JFrame {
     
     private String query = "SELECT r.codigo_receita as ID, nome_medico as Medico,"
             + " r.crm as CRM, r.cor as Cor, u.nome_completo as Cliente, p.nome_produto as Remedio FROM receitas r join usuarios u on u.codigo_usuario = r.codigo_cliente"
-            + "join produtos p on p.codigo_produto = r.codigo_produto";
+            + " join produtos p on p.codigo_produto = r.codigo_produto";
     private ResultSetTableModel result;//para trazer o resultado da query
     private final TableRowSorter< TableModel > filter;
 

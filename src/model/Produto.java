@@ -18,27 +18,45 @@ public class Produto extends DataAccessObject{
     }
 
     public void setCodigoProduto(int codigoProduto) {
-        this.codigoProduto = codigoProduto;
+        if( codigoProduto != this.codigoProduto){
+            this.codigoProduto = codigoProduto;
+            addChange("codigo_produto", this.codigoProduto);
+        }
     }
 
     public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+        if( nomeProduto != this.nomeProduto){
+            this.nomeProduto = nomeProduto;
+            addChange("nome_produto", this.nomeProduto);
+        }
     }
 
     public void setValorProduto(float valorProduto) {
-        this.valorProduto = valorProduto;
+        if( valorProduto != this.valorProduto){
+            this.valorProduto = valorProduto;
+            addChange("valor_produto", this.valorProduto);
+        }
     }
 
     public void setQuantidadeEstoque(int quantidadeEstoque) {
-        this.quantidadeEstoque = quantidadeEstoque;
+        if( quantidadeEstoque != this.quantidadeEstoque){
+            this.quantidadeEstoque = quantidadeEstoque;
+            addChange("quantidade_estoque", this.quantidadeEstoque);
+        }
     }
 
     public void setTarja(String tarja) {
-        this.tarja = tarja;
+        if( tarja != this.tarja){
+            this.tarja = tarja;
+            addChange("tarja", this.tarja);
+        }
     }
 
     public void setReceita(String receita) {
-        this.receita = receita;
+        if( receita != this.receita){
+            this.receita = receita;
+            addChange("receita", this.receita);
+        }
     }
 
     public void setCategoria(CategoriaProduto categoria) throws Exception {

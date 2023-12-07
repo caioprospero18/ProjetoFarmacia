@@ -77,9 +77,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jButtonApagarRemedio" alignment="0" min="-2" pref="31" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jButtonSelecionarRemedio1" min="-2" pref="33" max="-2" attributes="0"/>
+                              <Component id="jButtonSelecionarCliente" min="-2" pref="33" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButtonApagarRemedio1" min="-2" pref="31" max="-2" attributes="0"/>
+                              <Component id="jButtonApagarCliente" min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -117,12 +117,12 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jButtonApagarRemedio1" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jButtonApagarCliente" alignment="0" min="-2" pref="23" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                       <Component id="jLabelCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jTextFieldCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="jButtonSelecionarRemedio1" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="jButtonSelecionarCliente" alignment="1" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="19" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -219,24 +219,24 @@
         <Property name="editable" type="boolean" value="false"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonSelecionarRemedio1">
+    <Component class="javax.swing.JButton" name="jButtonSelecionarCliente">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/view/search-icon.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSelecionarRemedio1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonSelecionarClienteActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonApagarRemedio1">
+    <Component class="javax.swing.JButton" name="jButtonApagarCliente">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/view/eraser-icon.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonApagarRemedio1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonApagarClienteActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

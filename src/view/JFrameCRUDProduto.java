@@ -8,18 +8,27 @@ import model.Produto;
 
 public class JFrameCRUDProduto extends javax.swing.JFrame {
 
- private Produto produto;//objeto da tabela
+private Produto produto;//objeto da tabela
  private CategoriaProduto categoria;
  private boolean disconnectOnClose;//desconectar do banco ao fechar a janela
  
-    public JFrameCRUDProduto(Produto produto, boolean disconnectOnClose) {
+    public JFrameCRUDProduto(Produto produto, boolean disconnectOnClose) throws Exception {
         initComponents();
         
         if( produto == null){
             this.produto = new Produto();
+            
+
         } else{
             this.produto = produto;
+            
+            if (this.produto.getCategoria() != null){
+                this.categoria = new CategoriaProduto();
+                this.categoria.setCodigoCategoria(this.produto.getCategoria().getCodigoCategoria());
+                this.categoria.load();
+            }
             dataUp();//levar os dados para janela
+            this.produto.insert();
         }
         
         this.disconnectOnClose = disconnectOnClose;
@@ -34,11 +43,11 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
                 throw new Exception("O campo ID deve ser um número.");
             }
         }
-        
+
         if ( jTextFieldNome.getText().isEmpty()){
             throw new Exception("Informe o Nome do produto.");
         }
-        
+
         if (jTextFieldValor.getText().isEmpty()){
             throw new Exception("O valor do produt precisa ser informado.");
         }else{
@@ -47,6 +56,7 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
                 throw new Exception("O valor do produto deve estar no formato 'XXXXXXXX.X' ou 'XXXXXXXX.XX'.");
             }
         }
+
     }
     
     private void dataDown() throws Exception{
@@ -61,7 +71,7 @@ public class JFrameCRUDProduto extends javax.swing.JFrame {
         }else{
             produto.setReceita("N");
         }
-        produto.setCategoria(categoria);       
+        produto.setCategoria(categoria);  
     }
     
     private void dataUp(){

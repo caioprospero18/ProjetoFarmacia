@@ -10,8 +10,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 import model.Produto;
-import model.TipoUsuario;
 import model.Usuario;
 import model.Venda;
 import model.VendaProduto;
@@ -28,17 +29,17 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     DateTimeFormatter dtf;
     LocalDateTime now;
     Random aleatorio = new Random();
-    
-    
-    
-    
+        
     private String query = "SELECT p.nome_produto as Produto, vp.quantidade as Quantidade, p.receita as Receita " +
                            "from venda_produto vp \n" +
                            "inner join produtos p on p.codigo_produto = vp.codigo_produto \n" +
+                           "where vp.codigo_venda = 0 \n" +
                            "order by 2";
 
     public JFrameCRUDVenda(Usuario funcionario, Venda venda, boolean disconnectOnClose) throws SQLException, Exception {
         initComponents();
+        configElements();
+        
         dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         now = LocalDateTime.now();
 
@@ -435,17 +436,42 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonApagarProdutoActionPerformed
 
     private void jButtonAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAdicionarActionPerformed
+        float valorTotal = 0;
         try{
             if (vendaProduto == null){
                 vendaProduto = new VendaProduto();
-                vendaProduto.setCodigo(aleatorio.nextInt(10));
-                vendaProduto.setVenda(venda);
+                vendaProduto.setCodigo(aleatorio.nextInt(30));
+                System.out.println("Venda: " + this.venda.getCodigoVenda());
+
+                vendaProduto.setVenda(venda);               
                 vendaProduto.setProduto(produto);
                 vendaProduto.setQuantidade((int)jSpinnerQuant.getValue());
+                
+                valorTotal = venda.getValorVenda() + (produto.getValorProduto() * ((int) jSpinnerQuant.getValue()));
+                venda.setValorVenda(valorTotal);
+                venda.save();
+                jTextFieldValor.setText(String.valueOf(valorTotal));
+                
+                produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - ((int) jSpinnerQuant.getValue()));
+                produto.save();
+                
             }
             vendaProduto.save();
             
+            query = "SELECT p.nome_produto as Produto, vp.quantidade as Quantidade, p.receita as Receita " +
+                           "from venda_produto vp \n" +
+                           "inner join produtos p on p.codigo_produto = vp.codigo_produto \n" +
+                           "where vp.codigo_venda = '" + venda.getCodigoVenda() + "' " +
+                           "order by 2";
             
+            result.setQuery( query );
+            
+            vendaProduto = null;
+            produto = null;
+            jTextFieldProduto.setText(null);
+            
+            jSpinnerQuant = null;
+            jSpinnerQuant = new JSpinner(new SpinnerNumberModel(1, 1, 100, 1));
             //evento para fechar a janela ao clicar "Salvar"
             //this.dispatchEvent( new WindowEvent( this, WindowEvent.WINDOW_CLOSING));
         } catch (Exception ex){
@@ -453,6 +479,13 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonAdicionarActionPerformed
 
+    private void configElements(){        
+        jTextFieldID.setEditable(false);
+        jTextFieldDataHora.setEditable(false);
+        jTextFieldValor.setEditable(false);
+        
+    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
