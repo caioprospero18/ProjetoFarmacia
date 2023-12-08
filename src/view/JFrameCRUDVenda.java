@@ -3,11 +3,13 @@
 import controller.LogTrack;
 import controller.ResultSetTableModel;
 import java.awt.Color;
+import java.awt.List;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import static java.time.LocalDateTime.now;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,8 +31,10 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     private ResultSetTableModel result;
     DateTimeFormatter dtf;
     LocalDateTime now;
-    private static int id = 1;
     Random aleatorio = new Random();
+    int control, tamanho;
+    ArrayList<Integer> lista = new ArrayList<Integer>();
+    
         
     private String query = "SELECT p.nome_produto as Produto, vp.quantidade as Quantidade, p.receita as Receita " +
                            "from venda_produto vp \n" +
@@ -57,9 +61,18 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         }
         
         if( venda == null){
+            control = aleatorio.nextInt(100);
+            tamanho = lista.size();
+            
+            //Verifica se o numero ja não foi usado nessa sessão
+            for(int i = 0,i <= tamanho, i++){
+                if(control == lista.get(i)){
+                    control = aleatorio.nextInt(100);
+                }
+            }
             jTextFieldDataHora.setText(String.valueOf(dtf.format(now)));
-            jTextFieldID.setText(String.valueOf(aleatorio.nextInt(100)));
-
+            jTextFieldID.setText(String.valueOf(control));
+            lista.get(control);
             
             this.venda = new Venda();
             dataDown();
@@ -75,10 +88,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         result = new ResultSetTableModel(query);
         jTableProdutos.setModel(result);
     }
-    
-    public static int proxId(){
-        return id++;
-    }
+   
     
     private void checkInput() throws Exception{
         if( jTextFieldID.getText().isEmpty() ){
@@ -213,7 +223,6 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
             }
         });
 
-        jTableProdutos.setForeground(new java.awt.Color(255, 255, 255));
         jTableProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -359,6 +368,11 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
         try{
+            if (Float.parseFloat(jTextFieldValor.getText()) == 0){
+               venda.delete();
+               System.out.println("Não houve produtos selecionados. Venda deletada");
+           }
+            
             checkInput();
             dataDown();
             venda.save();
@@ -466,6 +480,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
                 produto.setQuantidadeEstoque(produto.getQuantidadeEstoque() - ((int) jSpinnerQuant.getValue()));
                 produto.save();
                 
+                jSpinnerQuant.setValue((int)1);              
             }
             vendaProduto.save();
             
