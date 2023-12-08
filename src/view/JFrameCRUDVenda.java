@@ -3,13 +3,11 @@
 import controller.LogTrack;
 import controller.ResultSetTableModel;
 import java.awt.Color;
-import java.awt.List;
 import java.awt.event.WindowEvent;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import static java.time.LocalDateTime.now;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -32,10 +30,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
     DateTimeFormatter dtf;
     LocalDateTime now;
     Random aleatorio = new Random();
-    int control, tamanho;
-    ArrayList<Integer> lista = new ArrayList<Integer>();
     
-        
     private String query = "SELECT p.nome_produto as Produto, vp.quantidade as Quantidade, p.receita as Receita " +
                            "from venda_produto vp \n" +
                            "inner join produtos p on p.codigo_produto = vp.codigo_produto \n" +
@@ -60,19 +55,11 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
             jTextFieldFuncionario.setText(funcionario.getNomeCompleto());
         }
         
-        if( venda == null){
-            control = aleatorio.nextInt(100);
-            tamanho = lista.size();
-            
-            //Verifica se o numero ja não foi usado nessa sessão
-            for(int i = 0,i <= tamanho, i++){
-                if(control == lista.get(i)){
-                    control = aleatorio.nextInt(100);
-                }
-            }
+        if( venda == null){           
+
             jTextFieldDataHora.setText(String.valueOf(dtf.format(now)));
-            jTextFieldID.setText(String.valueOf(control));
-            lista.get(control);
+            jTextFieldID.setText(String.valueOf(aleatorio.nextInt(10000)));
+
             
             this.venda = new Venda();
             dataDown();
@@ -465,7 +452,7 @@ public class JFrameCRUDVenda extends javax.swing.JFrame {
         try{
             if (vendaProduto == null){
                 vendaProduto = new VendaProduto();
-                vendaProduto.setCodigo(aleatorio.nextInt(30));
+                vendaProduto.setCodigo(aleatorio.nextInt(10000));
                 System.out.println("Venda: " + this.venda.getCodigoVenda());
 
                 vendaProduto.setVenda(venda);               
